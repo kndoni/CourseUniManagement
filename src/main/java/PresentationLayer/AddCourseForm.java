@@ -4,7 +4,15 @@
  * and open the template in the editor.
  */
 package PresentationLayer;
-
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import PresentationLayer.AddCourseForm;
+import static PresentationLayer.MainPage.ThisLogined;
+import BusinessNDataAccessLayer.CoursesDao;
+import static PresentationLayer.MainPage.PersonID;
+//import PresentationLayer.MyCoursesListForm;
 /**
  *
  * @author user
@@ -16,6 +24,26 @@ public class AddCourseForm extends javax.swing.JFrame {
      */
     public AddCourseForm() {
         initComponents();
+        UserID.setText(PersonID); //setting the ID automatically in textfield
+        //using calendar to display the data format in fields
+        int year;
+        Calendar cal = Calendar.getInstance();
+        year = cal.get(Calendar.YEAR);
+        String TodayYear;
+        TodayYear = String.valueOf(year);
+        IYear.setText(TodayYear);
+        String TodayMonth = String.valueOf(cal.get(Calendar.MONTH)+1);
+        IMonth.setText(TodayMonth);
+        String TodayDate = String.valueOf(cal.get(Calendar.DATE));
+        IDate.setText(TodayDate);
+        
+        Calendar addcal = null;
+        addcal = cal;
+        addcal.add(Calendar.DAY_OF_YEAR,15); 
+
+        RDate.setText(String.valueOf(addcal.get(Calendar.DATE)));
+        RMonth.setText(String.valueOf(addcal.get(Calendar.MONTH)+1)); //date ending in 1 month
+        RYear.setText(String.valueOf(addcal.get(Calendar.YEAR)));
     }
 
     /**
@@ -29,13 +57,13 @@ public class AddCourseForm extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        MyProfileBtn2 = new javax.swing.JButton();
+        FriendCoursesBtn = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        MyProfileBtn = new javax.swing.JButton();
+        BackToBtn = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
-        MyProfileBtn1 = new javax.swing.JButton();
+        EnrolledCoursesBtn = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -63,12 +91,12 @@ public class AddCourseForm extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
 
-        MyProfileBtn2.setBackground(new java.awt.Color(0, 102, 102));
-        MyProfileBtn2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\friends-course-list.png")); // NOI18N
-        MyProfileBtn2.setBorder(null);
-        MyProfileBtn2.addActionListener(new java.awt.event.ActionListener() {
+        FriendCoursesBtn.setBackground(new java.awt.Color(0, 102, 102));
+        FriendCoursesBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\friends-course-list.png")); // NOI18N
+        FriendCoursesBtn.setBorder(null);
+        FriendCoursesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MyProfileBtn2ActionPerformed(evt);
+                FriendCoursesBtnActionPerformed(evt);
             }
         });
 
@@ -90,7 +118,7 @@ public class AddCourseForm extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(MyProfileBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(FriendCoursesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -101,18 +129,18 @@ public class AddCourseForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MyProfileBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FriendCoursesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 102, 102));
 
-        MyProfileBtn.setBackground(new java.awt.Color(0, 102, 102));
-        MyProfileBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\previous.png")); // NOI18N
-        MyProfileBtn.setBorder(null);
-        MyProfileBtn.addActionListener(new java.awt.event.ActionListener() {
+        BackToBtn.setBackground(new java.awt.Color(0, 102, 102));
+        BackToBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\previous.png")); // NOI18N
+        BackToBtn.setBorder(null);
+        BackToBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MyProfileBtnActionPerformed(evt);
+                BackToBtnActionPerformed(evt);
             }
         });
 
@@ -134,7 +162,7 @@ public class AddCourseForm extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(MyProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BackToBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -145,18 +173,18 @@ public class AddCourseForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MyProfileBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BackToBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 102, 102));
 
-        MyProfileBtn1.setBackground(new java.awt.Color(0, 102, 102));
-        MyProfileBtn1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\my-course-list.png")); // NOI18N
-        MyProfileBtn1.setBorder(null);
-        MyProfileBtn1.addActionListener(new java.awt.event.ActionListener() {
+        EnrolledCoursesBtn.setBackground(new java.awt.Color(0, 102, 102));
+        EnrolledCoursesBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\my-course-list.png")); // NOI18N
+        EnrolledCoursesBtn.setBorder(null);
+        EnrolledCoursesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MyProfileBtn1ActionPerformed(evt);
+                EnrolledCoursesBtnActionPerformed(evt);
             }
         });
 
@@ -178,7 +206,7 @@ public class AddCourseForm extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(MyProfileBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(EnrolledCoursesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -189,7 +217,7 @@ public class AddCourseForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(MyProfileBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(EnrolledCoursesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -304,6 +332,11 @@ public class AddCourseForm extends javax.swing.JFrame {
         AddCourseBtn.setText("Enroll course");
         AddCourseBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         AddCourseBtn.setContentAreaFilled(false);
+        AddCourseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCourseBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -403,19 +436,19 @@ public class AddCourseForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void MyProfileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProfileBtnActionPerformed
+    private void BackToBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
         UserLogin.main(new String[]{});
-    }//GEN-LAST:event_MyProfileBtnActionPerformed
+    }//GEN-LAST:event_BackToBtnActionPerformed
 
-    private void MyProfileBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProfileBtn1ActionPerformed
+    private void EnrolledCoursesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrolledCoursesBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MyProfileBtn1ActionPerformed
+    }//GEN-LAST:event_EnrolledCoursesBtnActionPerformed
 
-    private void MyProfileBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MyProfileBtn2ActionPerformed
+    private void FriendCoursesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FriendCoursesBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MyProfileBtn2ActionPerformed
+    }//GEN-LAST:event_FriendCoursesBtnActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -448,6 +481,49 @@ public class AddCourseForm extends javax.swing.JFrame {
     private void RYearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RYearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RYearActionPerformed
+
+    private void AddCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCourseBtnActionPerformed
+        // TODO add your handling code here:
+        int CourseIDV;
+        CourseIDV = Integer.parseInt(CourseIDField.getText());
+        String UserIDV=PersonID; //set the userID field to PersonID, which is genereated automatically from login
+
+        String IFDate = IYear.getText() + "-"+IMonth.getText()+"-"+IDate.getText();
+        String RFDate = RYear.getText() + "-"+RMonth.getText()+"-"+RDate.getText();
+        System.out.println(IFDate);
+                         
+        if(CoursesDao.CourseValidate(CourseIDField.getText()) && CoursesDao.UserValidate(UserID.getText()))
+        {
+            if(CoursesDao.Check(UserIDV)==0)
+            JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                if(CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
+                {
+
+                    JOptionPane.showMessageDialog(AddCourseForm.this, "The course enrolled!","Check your course list in profile", JOptionPane.ERROR_MESSAGE);
+                    CourseIDField.setText("");
+                   // UserID.setText("");
+                }
+               
+                else 
+                JOptionPane.showMessageDialog(AddCourseForm.this, "Unable to enroll course","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            }
+
+        }
+        
+        else
+        {    if(CoursesDao.UserValidate(UserID.getText())){
+            JOptionPane.showMessageDialog(AddCourseForm.this, "Please choose a course of your major","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+           CourseIDField.setText("");}
+           else
+            if(CoursesDao.CourseValidate(CourseIDField.getText()))
+            JOptionPane.showMessageDialog(AddCourseForm.this, "This course doesn't exist","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            else
+            JOptionPane.showMessageDialog(AddCourseForm.this, "The course and user doesn't exist!","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }//GEN-LAST:event_AddCourseBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,13 +562,13 @@ public class AddCourseForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddCourseBtn;
+    private javax.swing.JButton BackToBtn;
     public static final javax.swing.JTextField CourseIDField = new javax.swing.JTextField();
+    private javax.swing.JButton EnrolledCoursesBtn;
+    private javax.swing.JButton FriendCoursesBtn;
     private javax.swing.JTextField IDate;
     private javax.swing.JTextField IMonth;
     private javax.swing.JTextField IYear;
-    private javax.swing.JButton MyProfileBtn;
-    private javax.swing.JButton MyProfileBtn1;
-    private javax.swing.JButton MyProfileBtn2;
     private javax.swing.JTextField RDate;
     private javax.swing.JTextField RMonth;
     private javax.swing.JTextField RYear;
