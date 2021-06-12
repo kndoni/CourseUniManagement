@@ -5,6 +5,9 @@
  */
 package PresentationLayer;
 
+import javax.swing.JOptionPane;
+import BusinessNDataAccessLayer.LoginDao;
+
 /**
  *
  * @author user
@@ -217,6 +220,24 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
+         String Uname;
+        Uname = usernameT.getText();
+        String Pass;
+        Pass = String.valueOf(passwordT.getPassword());
+        System.out.println(Uname+" "+Pass);
+        if(LoginDao.validate(Uname, Pass))
+        {
+              JOptionPane.showMessageDialog(null, "Welcome back "+usernameT.getText());
+                String messg=usernameT.getText();
+                //MainPage.messageTxt.setText(messg);
+             this.dispose();
+             MainPage.main(new String[]{Uname,Pass});
+           
+        }else{
+				JOptionPane.showMessageDialog(LoginForm.this, "Invalid username or password!","Please insert username and password", JOptionPane.ERROR_MESSAGE);
+				usernameT.setText("");
+				passwordT.setText("");
+        }
         
     }//GEN-LAST:event_LoginBtnActionPerformed
 
@@ -252,6 +273,8 @@ public class LoginForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+        LoginForm thiswin;
+        thiswin = new LoginForm();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginForm().setVisible(true);
