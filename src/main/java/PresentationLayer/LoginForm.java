@@ -49,15 +49,13 @@ public class LoginForm extends javax.swing.JFrame {
         line.setToolTipText("username");
         line.setEnabled(false);
 
-        usernameT.setEditable(false);
         usernameT.setBackground(new java.awt.Color(186, 79, 64));
-        usernameT.setForeground(new java.awt.Color(186, 79, 64));
+        usernameT.setForeground(new java.awt.Color(255, 255, 255));
         usernameT.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         usernameT.setToolTipText("username");
         usernameT.setBorder(null);
         usernameT.setCaretColor(new java.awt.Color(187, 187, 187));
         usernameT.setDisabledTextColor(new java.awt.Color(187, 187, 187));
-        usernameT.setEnabled(false);
         usernameT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTActionPerformed(evt);
@@ -65,7 +63,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         passwordT.setBackground(new java.awt.Color(186, 79, 64));
-        passwordT.setForeground(new java.awt.Color(187, 187, 187));
+        passwordT.setForeground(new java.awt.Color(255, 255, 255));
         passwordT.setBorder(null);
         passwordT.setCaretColor(new java.awt.Color(187, 187, 187));
         passwordT.setDisabledTextColor(new java.awt.Color(187, 187, 187));
@@ -130,10 +128,10 @@ public class LoginForm extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(lineLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
-                            .addGroup(lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(usernameT, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(passwordT, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                .addComponent(usernameT))))
                     .addGroup(lineLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -180,15 +178,15 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+                .addGap(28, 28, 28))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -220,7 +218,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
-         String Uname;
+        String Uname;
         Uname = usernameT.getText();
         String Pass;
         Pass = String.valueOf(passwordT.getPassword());
@@ -229,7 +227,7 @@ public class LoginForm extends javax.swing.JFrame {
         {
               JOptionPane.showMessageDialog(null, "Welcome back "+usernameT.getText());
                 String messg=usernameT.getText();
-                //MainPage.messageTxt.setText(messg);
+                MainPage.messageTxt.setText(messg);
              this.dispose();
              MainPage.main(new String[]{Uname,Pass});
            
