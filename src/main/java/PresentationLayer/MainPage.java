@@ -125,6 +125,11 @@ public class MainPage extends javax.swing.JFrame {
         EnrollCourseBtn.setBackground(new java.awt.Color(0, 102, 102));
         EnrollCourseBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\enrollCourse.png")); // NOI18N
         EnrollCourseBtn.setBorder(null);
+        EnrollCourseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnrollCourseBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -552,6 +557,11 @@ public class MainPage extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void EnrollCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrollCourseBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_EnrollCourseBtnActionPerformed
 
     /**
      * @param args the command line arguments
