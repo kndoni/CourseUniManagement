@@ -5,6 +5,14 @@
  */
 package PresentationLayer;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import PresentationLayer.DB;
+import static PresentationLayer.MainPage.ThisLogined;
+
 /**
  *
  * @author user
@@ -14,8 +22,15 @@ public class UserLoginSuccess extends javax.swing.JFrame {
     /**
      * Creates new form UserLoginSuccess
      */
+    public static String GetName,PersonID,GetEmail,GetRegDate,GetAge,GetMajor;
     public UserLoginSuccess() {
         initComponents();
+        NameField.setText(GetName);
+        emailField.setText(GetEmail);
+        RegDateField.setText(GetRegDate);
+        IDField.setText(PersonID);
+        AgeField.setText(GetAge);
+        MajorField.setText(GetMajor);
     }
 
     /**
@@ -31,8 +46,8 @@ public class UserLoginSuccess extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BackToBtn = new javax.swing.JButton();
+        UpdateBtn = new javax.swing.JButton();
         NameField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         AgeField = new javax.swing.JTextField();
@@ -83,21 +98,27 @@ public class UserLoginSuccess extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("back");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BackToBtn.setBackground(new java.awt.Color(255, 255, 255));
+        BackToBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        BackToBtn.setForeground(new java.awt.Color(255, 255, 255));
+        BackToBtn.setText("back");
+        BackToBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BackToBtn.setContentAreaFilled(false);
+        BackToBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BackToBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("update");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        UpdateBtn.setBackground(new java.awt.Color(255, 255, 255));
+        UpdateBtn.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        UpdateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        UpdateBtn.setText("update");
+        UpdateBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        UpdateBtn.setContentAreaFilled(false);
+        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                UpdateBtnActionPerformed(evt);
             }
         });
 
@@ -148,9 +169,9 @@ public class UserLoginSuccess extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BackToBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -211,8 +232,8 @@ public class UserLoginSuccess extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackToBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
 
@@ -234,15 +255,31 @@ public class UserLoginSuccess extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BackToBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToBtnActionPerformed
         // TODO add your handling code here:
-   
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+        ThisLogined.setVisible(true);
+    }//GEN-LAST:event_BackToBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         // TODO add your handling code here:
+        try{
+        String v1= NameField.getText();
+        String v2= emailField.getText();
+        String v5= AgeField.getText();
+        String v6=MajorField.getText();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String sql ="update login set FullName='"+v1+"',Email='"+v2+"',Age='"+v5+"',MajorN='"+v6+"' where LoginID='"+PersonID+"'";
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdatabase","root","");
+       PreparedStatement pst=con.prepareStatement(sql);
+       pst.execute();
+       JOptionPane.showMessageDialog(null, "Your profile is updated");
+        }
+        catch (Exception  e){
+            JOptionPane.showConfirmDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_UpdateBtnActionPerformed
 
     private void NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameFieldActionPerformed
         // TODO add your handling code here:
@@ -281,17 +318,41 @@ public class UserLoginSuccess extends javax.swing.JFrame {
                 new UserLoginSuccess().setVisible(true);
             }
         });
+        
+        //  String User=args[0];
+        String Pass=args[0];
+        try{
+			Connection Con;
+                        Con = DB.getConnection();
+			PreparedStatement ps;
+                        ps = Con.prepareStatement("select * from login where Password=?");
+			//ps.setString(1,User);
+			ps.setString(1,Pass);
+			ResultSet rs;
+                          rs = ps.executeQuery();
+            boolean status = rs.next();
+            GetName=rs.getString("FullName");
+            GetRegDate = rs.getString("RegDate");
+            GetEmail = rs.getString("Email");
+            PersonID= rs.getString("LoginID");
+            GetAge = rs.getString("Age");
+            GetMajor = rs.getString("MajorN");
+            Con.close();
+        
+        
+       
+         }catch(Exception f){System.out.println(f);}
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField AgeField;
+    private javax.swing.JButton BackToBtn;
     private javax.swing.JTextField IDField;
     private javax.swing.JTextField MajorField;
     private javax.swing.JTextField NameField;
     private javax.swing.JTextField RegDateField;
+    private javax.swing.JButton UpdateBtn;
     private javax.swing.JTextField emailField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
