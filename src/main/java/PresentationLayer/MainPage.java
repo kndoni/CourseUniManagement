@@ -560,7 +560,8 @@ public class MainPage extends javax.swing.JFrame {
 
     private void EnrollCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrollCourseBtnActionPerformed
         // TODO add your handling code here:
-        
+        this.setVisible(false);
+        AddCourseForm.main(new String[] {});
     }//GEN-LAST:event_EnrollCourseBtnActionPerformed
 
     /**
