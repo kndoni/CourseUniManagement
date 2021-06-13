@@ -439,7 +439,7 @@ public class AddCourseForm extends javax.swing.JFrame {
     private void BackToBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackToBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        UserLogin.main(new String[]{});
+        MainPage.main(new String[]{});
     }//GEN-LAST:event_BackToBtnActionPerformed
 
     private void EnrolledCoursesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrolledCoursesBtnActionPerformed
