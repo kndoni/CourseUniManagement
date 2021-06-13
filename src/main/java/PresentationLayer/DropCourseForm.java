@@ -5,6 +5,11 @@
  */
 package PresentationLayer;
 
+import BusinessNDataAccessLayer.CoursesDao;
+import static PresentationLayer.MainPage.PersonID;
+import java.util.Calendar;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -16,6 +21,12 @@ public class DropCourseForm extends javax.swing.JFrame {
      */
     public DropCourseForm() {
         initComponents();
+        UserIDfield.setText(PersonID);
+        Calendar cal = Calendar.getInstance();
+
+        IDate1.setText(String.valueOf(cal.get(Calendar.DATE)));
+        IMonth1.setText(String.valueOf(cal.get(Calendar.MONTH)+1));
+        IYear1.setText(String.valueOf(cal.get(Calendar.YEAR)));
     }
 
     /**
@@ -206,6 +217,11 @@ public class DropCourseForm extends javax.swing.JFrame {
         DropCourseBtn.setText("Drop Course");
         DropCourseBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         DropCourseBtn.setContentAreaFilled(false);
+        DropCourseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DropCourseBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -318,6 +334,48 @@ public class DropCourseForm extends javax.swing.JFrame {
     private void IYear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IYear1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IYear1ActionPerformed
+
+    private void DropCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DropCourseBtnActionPerformed
+        // TODO add your handling code here:
+        int CourseIDV;
+        CourseIDV = Integer.parseInt(CourseIdField.getText());
+        String UserIDV=PersonID;
+        
+        String IFDate = IYear1.getText() + "-"+IMonth1.getText()+"-"+IDate1.getText();
+        System.out.println(IFDate);
+
+        if(CoursesDao.CourseValidate(CourseIdField.getText()) && CoursesDao.UserValidate(UserIDfield.getText()))
+        {
+               if(CoursesDao.CheckEnrollCourses(CourseIDV))
+               {
+                   
+                   if(CoursesDao.DropingCourse(CourseIDV, UserIDV)!=0)
+                   {
+                        JOptionPane.showMessageDialog(DropCourseForm.this, "You dropped this course","Course Dropped!", JOptionPane.ERROR_MESSAGE);
+                       // UserIDfield.setText("");
+                        CourseIdField.setText("");
+                   }
+                   else
+                        JOptionPane.showMessageDialog(DropCourseForm.this, "Unable to drop this course","Dropping course Error!", JOptionPane.ERROR_MESSAGE);
+                       
+               }
+               else
+                JOptionPane.showMessageDialog(DropCourseForm.this, "This course is not in your list!","Dropping course Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {    if(CoursesDao.UserValidate(UserIDfield.getText()))
+        {
+            System.out.println("ID: "+ UserIDfield.getText());
+                    JOptionPane.showMessageDialog(DropCourseForm.this, "This course doesn't exist in your list!","Dropping course Error!", JOptionPane.ERROR_MESSAGE);
+        }
+                    else
+                if(CoursesDao.CourseValidate(CourseIdField.getText()))
+                    JOptionPane.showMessageDialog(DropCourseForm.this, "Unable to drop the course","Dropping course Error!", JOptionPane.ERROR_MESSAGE);
+                 else
+            JOptionPane.showMessageDialog(DropCourseForm.this, "Input not available in the list","Dropping course Error!", JOptionPane.ERROR_MESSAGE);
+       
+        }
+    }//GEN-LAST:event_DropCourseBtnActionPerformed
 
     /**
      * @param args the command line arguments

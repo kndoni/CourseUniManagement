@@ -12,6 +12,7 @@ import PresentationLayer.AddCourseForm;
 import static PresentationLayer.MainPage.ThisLogined;
 import BusinessNDataAccessLayer.CoursesDao;
 import static PresentationLayer.MainPage.PersonID;
+import static PresentationLayer.MainPage.Major;
 //import PresentationLayer.MyCoursesListForm;
 /**
  *
@@ -491,6 +492,9 @@ public class AddCourseForm extends javax.swing.JFrame {
         String IFDate = IYear.getText() + "-"+IMonth.getText()+"-"+IDate.getText();
         String RFDate = RYear.getText() + "-"+RMonth.getText()+"-"+RDate.getText();
         System.out.println(IFDate);
+        
+        System.out.println(PersonID);
+        System.out.println(Major);
                          
         if(CoursesDao.CourseValidate(CourseIDField.getText()) && CoursesDao.UserValidate(UserID.getText()))
         {
@@ -514,6 +518,7 @@ public class AddCourseForm extends javax.swing.JFrame {
         
         else
         {    if(CoursesDao.UserValidate(UserID.getText())){
+            System.out.println("User ID:"+UserID.getText());
             JOptionPane.showMessageDialog(AddCourseForm.this, "Please choose a course of your major","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
            CourseIDField.setText("");}
            else

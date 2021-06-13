@@ -4,10 +4,11 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import PresentationLayer.DB;
-import PresentationLayer.UserLoginSuccess;
+import PresentationLayer.MainPage;
 public class CoursesDao {
-	
 
+    public static String major = MainPage.Major;
+    
 public static boolean checkBook(String courselno){
 	boolean status=false;
 	try{
@@ -25,23 +26,29 @@ public static boolean checkBook(String courselno){
     {
     boolean status = false;
     try(Connection con = DB.getConnection()) {
-        PreparedStatement ps = con.prepareStatement("select * from courses where CourseID = ? and Major='"+UserLoginSuccess.GetMajor+"'"); 
+         System.out.println("ID qe vjen: "+CourseID);
+         System.out.println("Major e perdoruesit: "+ major);
+        PreparedStatement ps = con.prepareStatement("select * from courses where CourseID = ? and Major='"+MainPage.Major+"'"); 
         ps.setString(1, CourseID);
         ResultSet rs=ps.executeQuery();
         status=rs.next();
+        System.out.println("Gjendja statusit: "+status);
         con.close();
     }catch(Exception e){System.out.println(e);}
+    System.out.println("Gjendja statusit: "+status);
     return status;
 }
 
-         public static boolean UserValidate( String LoginID)
+         public static boolean UserValidate(String LoginID)
     {
     boolean status = false;
     try(Connection con = DB.getConnection()) {
+        System.out.println("ID qe vjen: "+LoginID);
         PreparedStatement ps = con.prepareStatement("select * from login where LoginID = ?"); 
         ps.setString(1, LoginID);
         ResultSet rs=ps.executeQuery();
         status=rs.next();
+        System.out.println("Gjendja statusit: "+status);
         con.close();
     }catch(Exception e){System.out.println(e);}
     return status;

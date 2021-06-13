@@ -30,7 +30,7 @@ public class MainPage extends javax.swing.JFrame {
        return ThisLogined;
     }
     
-    public static String Name,PersonID,Email;
+    public static String Name,PersonID,Email,Major;
     /**
      * Creates new form MainPage
      */
@@ -394,9 +394,8 @@ public class MainPage extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
@@ -631,7 +630,8 @@ public class MainPage extends javax.swing.JFrame {
             Name=rs.getString("FullName");
             PersonID = rs.getString("LoginID");
             Email = rs.getString("Email");
-            System.out.println(Name+" "+PersonID+" "+Email);
+            Major = rs.getString("MajorN");
+            System.out.println(Name+" "+PersonID+" "+Email +" "+ Major);
             Con.close();
         
        
