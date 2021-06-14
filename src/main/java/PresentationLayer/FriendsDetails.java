@@ -5,6 +5,21 @@
  */
 package PresentationLayer;
 
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import PresentationLayer.DB;
+import static PresentationLayer.MainPage.PersonID;
+
 /**
  *
  * @author user
@@ -14,8 +29,36 @@ public class FriendsDetails extends javax.swing.JFrame {
     /**
      * Creates new form FriendsDetails
      */
-    public FriendsDetails() {
+    public FriendsDetails() throws SQLException {
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        
         initComponents();
+        
+          int UserIDV =Integer.parseInt(PersonID);
+        DefaultTableModel model;
+        model = (DefaultTableModel) jTable1.getModel();
+ 
+        try(Connection Con = DB.getConnection()) {
+            PreparedStatement ps=Con.prepareStatement("select enrollcourses.CourseID,friends.friendshipID , enrollcourses.IssueDate, enrollcourses.ReturnDate from friends,enrollcourses where friends.friendshipID=enrollcourses.UserID and friends.LoginID=?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            
+            ps.setInt(1,UserIDV);
+            ResultSet rs= ps.executeQuery();
+            
+           ResultSetMetaData rsmd = rs.getMetaData();
+  
+            int colnum=rsmd.getColumnCount();
+            String Row[];
+            Row = new String[colnum];
+            while(rs.next()){
+                for(int i=1;i<=colnum;i++){
+                    Row[i-1]=rs.getString(i);
+                    }
+                 model.addRow(Row);
+            }
+   
+           Con.close();
+          }catch(Exception e){System.out.println(e);
+        }
     }
 
     /**
@@ -221,9 +264,15 @@ public class FriendsDetails extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FriendsDetails().setVisible(true);
+                try {
+                    new FriendsDetails().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(FriendsDetails.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+        
+        PersonID = args[0];
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
