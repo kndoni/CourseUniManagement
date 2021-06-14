@@ -6,6 +6,7 @@
 package PresentationLayer;
 
 import PresentationLayer.DropCourseForm;
+import PresentationLayer.AddFriendForm;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -274,6 +275,11 @@ public class MainPage extends javax.swing.JFrame {
         UpdatesBtn2.setBackground(new java.awt.Color(0, 102, 102));
         UpdatesBtn2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\add-friend.png")); // NOI18N
         UpdatesBtn2.setBorder(null);
+        UpdatesBtn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatesBtn2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -574,6 +580,12 @@ public class MainPage extends javax.swing.JFrame {
         this.setVisible(false);
         DropCourseForm.main(new String[]{});
     }//GEN-LAST:event_DropCourseBtnActionPerformed
+
+    private void UpdatesBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtn2ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        AddFriendForm.main(new String[]{});
+    }//GEN-LAST:event_UpdatesBtn2ActionPerformed
 
     /**
      * @param args the command line arguments
