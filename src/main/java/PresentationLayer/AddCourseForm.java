@@ -445,6 +445,7 @@ public class AddCourseForm extends javax.swing.JFrame {
 
     private void EnrolledCoursesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnrolledCoursesBtnActionPerformed
         // TODO add your handling code here:
+         MyCoursesListForm.main(new String[] {PersonID});
     }//GEN-LAST:event_EnrolledCoursesBtnActionPerformed
 
     private void FriendCoursesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FriendCoursesBtnActionPerformed
