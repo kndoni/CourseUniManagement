@@ -5,6 +5,22 @@
  */
 package PresentationLayer;
 
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import PresentationLayer.DB;
+import static java.util.logging.Level.ALL;
+
 /**
  *
  * @author user
@@ -15,7 +31,31 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
      * Creates new form CheckRecentUpdates
      */
     public CheckRecentUpdates() {
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         initComponents();
+        DefaultTableModel model;
+        model = (DefaultTableModel) updatesTable.getModel();
+ 
+        try(Connection Con = DB.getConnection()) {
+            PreparedStatement ps=Con.prepareStatement("select enrollcourses.CourseID,enrollcourses.UserID,courses.CourseName , enrollcourses.IssueDate, enrollcourses.ReturnDate from courses,enrollcourses where courses.CourseID=enrollcourses.CourseID;",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs= ps.executeQuery();
+            
+           ResultSetMetaData rsmd = rs.getMetaData();
+  
+            int colnum=rsmd.getColumnCount();
+  
+            String Row[];
+            Row = new String[colnum];
+            while(rs.next()){
+                for(int i=1;i<=colnum;i++){
+                    Row[i-1]=rs.getString(i);
+                    }
+                 model.addRow(Row);
+            }
+
+           Con.close();
+        }catch(Exception e){System.out.println(e);
+    }
     }
 
     /**
@@ -33,9 +73,13 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        SearchField = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         updatesTable = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        NameRadio = new javax.swing.JRadioButton();
+        CourseIDRadio = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +140,7 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,10 +149,30 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Check friends enroll in courses");
+
+        SearchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchFieldActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\search.png")); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         updatesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,33 +199,66 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
         updatesTable.setRowHeight(20);
         jScrollPane1.setViewportView(updatesTable);
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Check friends enroll in courses");
+        NameRadio.setBackground(new java.awt.Color(0, 153, 153));
+        NameRadio.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        NameRadio.setForeground(new java.awt.Color(255, 255, 255));
+        NameRadio.setText("Name");
+        NameRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NameRadioActionPerformed(evt);
+            }
+        });
+
+        CourseIDRadio.setBackground(new java.awt.Color(0, 153, 153));
+        CourseIDRadio.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        CourseIDRadio.setForeground(new java.awt.Color(255, 255, 255));
+        CourseIDRadio.setText("CourseID");
+        CourseIDRadio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CourseIDRadioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addComponent(NameRadio)
+                        .addGap(18, 18, 18)
+                        .addComponent(CourseIDRadio)
+                        .addGap(32, 32, 32)
+                        .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(30, 30, 30))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(210, 210, 210)))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NameRadio)
+                            .addComponent(CourseIDRadio))))
+                .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,6 +288,120 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void SearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchFieldActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+             DefaultTableModel model;
+        model = (DefaultTableModel) updatesTable.getModel();
+        while(model.getRowCount()>0)
+            model.removeRow(model.getRowCount()-1);
+        if(NameRadio.isSelected())
+        {
+
+            String Search = "%"+SearchField.getText()+"%";
+        try(Connection Con = DB.getConnection()) {
+            PreparedStatement ps=Con.prepareStatement("select enrollcourses.CourseID,enrollcourses.UserID,courses.CourseName , enrollcourses.IssueDate, enrollcourses.ReturnDate from courses,enrollcourses where courses.CourseID=enrollcourses.CourseID and courses.CourseName like ?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ps.setString(1, Search);
+            ResultSet rs= ps.executeQuery();
+            
+           ResultSetMetaData rsmd = rs.getMetaData();
+  
+            int colnum=rsmd.getColumnCount();
+ 
+            String Row[];
+            Row = new String[colnum];
+            while(rs.next()){
+                for(int i=1;i<=colnum;i++){
+                    Row[i-1]=rs.getString(i);
+                    }
+                 model.addRow(Row);
+            }
+            int rowcount = model.getRowCount();
+             System.out.println(rowcount);
+            if(rowcount==0)
+            {
+                String NoRow[];
+                NoRow = new String[7];
+                NoRow[1]="NO";
+                NoRow[2]="RESULT";
+                NoRow[0]="";
+                NoRow[3]="";
+                NoRow[4]="";
+                NoRow[5]="";
+                NoRow[6]="";
+                model.addRow(NoRow);
+                
+                
+            }
+  
+           Con.close();
+        }catch(Exception e){System.out.println(e);
+    } }
+        
+        else if(CourseIDRadio.isSelected())
+        {
+
+            String Search = SearchField.getText();
+            int BookIDV;
+        BookIDV = Integer.parseInt(Search);
+        try(Connection Con = DB.getConnection()) {
+            PreparedStatement ps=Con.prepareStatement("select enrollcourses.CourseID,enrollcourses.UserID,courses.CourseName , enrollcourses.IssueDate, enrollcourses.ReturnDate from courses,enrollcourses where courses.CourseID=enrollcourses.CourseID and enrollcourses.CourseID=?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ps.setInt(1,BookIDV);
+            ResultSet rs= ps.executeQuery();
+            
+           ResultSetMetaData rsmd = rs.getMetaData();
+  
+            int colnum=rsmd.getColumnCount();
+
+            String Row[];
+            Row = new String[colnum];
+            while(rs.next()){
+                for(int i=1;i<=colnum;i++){
+                    Row[i-1]=rs.getString(i);
+                    }
+                 model.addRow(Row);
+            }
+            int rowcount = model.getRowCount();
+             System.out.println(rowcount);
+            if(rowcount==0)
+            {
+                String NoRow[];
+                NoRow = new String[7];
+                NoRow[1]="NO";
+                NoRow[2]="RESULT";
+                NoRow[0]="";
+                NoRow[3]="";
+                NoRow[4]="";
+                NoRow[5]="";
+                NoRow[6]="";
+                model.addRow(NoRow);
+                
+                
+            }
+
+           Con.close();
+        }catch(Exception e){System.out.println(e);
+    }
+        }
+        else
+        {
+        JOptionPane.showMessageDialog(CheckRecentUpdates.this, "Select Name or Author","No Selection!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void NameRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NameRadioActionPerformed
+        // TODO add your handling code here:
+        CourseIDRadio.setSelected(false);
+    }//GEN-LAST:event_NameRadioActionPerformed
+
+    private void CourseIDRadioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CourseIDRadioActionPerformed
+        // TODO add your handling code here:
+        NameRadio.setSelected(false);
+    }//GEN-LAST:event_CourseIDRadioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +440,10 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackToBtn;
+    private javax.swing.JRadioButton CourseIDRadio;
+    private javax.swing.JRadioButton NameRadio;
+    private javax.swing.JTextField SearchField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
