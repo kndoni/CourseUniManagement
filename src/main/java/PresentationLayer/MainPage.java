@@ -240,6 +240,11 @@ public class MainPage extends javax.swing.JFrame {
         UpdatesBtn.setBackground(new java.awt.Color(0, 102, 102));
         UpdatesBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\courseAttendees.png")); // NOI18N
         UpdatesBtn.setBorder(null);
+        UpdatesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdatesBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -586,6 +591,11 @@ public class MainPage extends javax.swing.JFrame {
         this.setVisible(false);
         AddFriendForm.main(new String[]{});
     }//GEN-LAST:event_UpdatesBtn2ActionPerformed
+
+    private void UpdatesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtnActionPerformed
+        // TODO add your handling code here:
+        CheckRecentUpdates.main(new String[]{});
+    }//GEN-LAST:event_UpdatesBtnActionPerformed
 
     /**
      * @param args the command line arguments
