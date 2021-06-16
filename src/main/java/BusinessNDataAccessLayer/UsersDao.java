@@ -9,6 +9,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import PresentationLayer.DB;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,10 +54,39 @@ public class UsersDao {
 		return status;
         
     }
-    
-    
-
    
+    public static void saveUser(String username, String password, String fullName, String email, int age, String MajorN){
+        Connection con=DB.getConnection();
+        try {
+            String input = "06-10-2013 18:29:09";
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss");
+            java.util.Date dt = sdf.parse(input);
+            java.sql.Date dtSql = new java.sql.Date(dt.getTime());
+            
+            int returned = 0;
+            
+            PreparedStatement stat;
+            ResultSet rs;
+            String sql = "SELECT MAX(LoginID) AS LoginID FROM login";
+            stat = con.prepareStatement(sql);
+            rs = stat.executeQuery();
+            if (rs.next()) {
+                returned = rs.getInt("LoginID") + 1;
+            }
+            
+            PreparedStatement ps = con.prepareStatement("insert into login (LoginID,UserName, Password, FullName, Email, Age, MajorN, RegDate) values (?,?,?,?,?,?,?,?)");
+            ps.setInt(1, returned);
+            ps.setString(2, username);
+	    ps.setString(3, password);
+            ps.setString(4, fullName);
+            ps.setString(5, email);
+            ps.setInt(6, age);
+            ps.setString(7, MajorN);
+            ps.setDate(8,dtSql);
+            
 
+	    ps.execute();
+        } catch(Exception e){System.out.println(e);}
+    }
     
 }

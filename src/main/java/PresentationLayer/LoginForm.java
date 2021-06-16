@@ -243,6 +243,8 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtn1ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        SignUpFrame.main(new String[]{});
     }//GEN-LAST:event_LoginBtn1ActionPerformed
 
     /**
