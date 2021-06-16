@@ -222,8 +222,10 @@ public class LoginForm extends javax.swing.JFrame {
         Uname = usernameT.getText();
         String Pass;
         Pass = String.valueOf(passwordT.getPassword());
-        System.out.println(Uname+" "+Pass);
-        if(LoginDao.validate(Uname, Pass))
+        
+        boolean status = LoginUser(Uname, Pass);
+        
+        if(status==true)
         {
               JOptionPane.showMessageDialog(null, "Welcome back "+usernameT.getText());
                 String messg=usernameT.getText();
@@ -279,7 +281,6 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginBtn;
     private javax.swing.JButton LoginBtn1;
@@ -294,4 +295,13 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordT;
     private javax.swing.JTextField usernameT;
     // End of variables declaration//GEN-END:variables
+
+     public boolean LoginUser(String uName, String Pass){
+        String username = uName;
+        String password = Pass;
+        System.out.println(username+" "+password);
+
+        return LoginDao.validate(username, password);
+    }
+
 }
