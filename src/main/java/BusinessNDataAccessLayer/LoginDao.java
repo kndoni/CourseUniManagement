@@ -7,7 +7,7 @@ package BusinessNDataAccessLayer;
 
 /**
  *
- * @author user
+ * @author ndoni
  */
 import java.sql.*;
 import PresentationLayer.DB;
