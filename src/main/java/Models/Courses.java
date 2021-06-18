@@ -28,6 +28,17 @@ public class Courses {
         this.Location = Location;
     }
 
+    public Courses(String CourseName, String Program, String Instructor, String Major, String Schedule, String Location) {
+        this.CourseName = CourseName;
+        this.Program = Program;
+        this.Instructor = Instructor;
+        this.Major = Major;
+        this.Schedule = Schedule;
+        this.Location = Location;
+    }
+    
+    
+
     public int getCourseID() {
         return CourseID;
     }

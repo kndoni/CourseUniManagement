@@ -15,7 +15,7 @@ import org.junit.jupiter.api.AfterAll;
 
 /**
  *
- * @author user
+ * @author ndoni, tahiraj, muco
  */
 public class UsersDaoTest {
     
@@ -50,6 +50,18 @@ public class UsersDaoTest {
          Assert.assertEquals(result3, value3);
          Assert.assertEquals(result1, value1);
          Assert.assertEquals(result2, value2);
+    }
+    
+    @Test
+    public void testValidate(){
+        boolean value = true;
+       Assert.assertEquals(value, UsersDao.validate("kristi123"));
+    }
+    
+    @Test
+    public void testCheckIfAlready(){
+        boolean value = true;
+       Assert.assertEquals(value, UsersDao.CheckIfAlready("kristi"));
     }
     
     @AfterAll

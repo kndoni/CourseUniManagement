@@ -25,33 +25,52 @@ public class CoursesDao {
         }
         return status;
     }
-    
+
     public List<Courses> all() {
 
-	List<Courses> allCourses = new ArrayList<Courses>();
+        List<Courses> allCourses = new ArrayList<Courses>();
 
-	try {
+        try {
             Connection con = DB.getConnection();
-	    PreparedStatement ps = con.prepareStatement("select * from courses");
+            PreparedStatement ps = con.prepareStatement("select * from courses");
 
-	    ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-	    while (rs.next()) {
-		int courseID = rs.getInt("CourseID");
-		String courseName = rs.getString("CourseName");
+            while (rs.next()) {
+                int courseID = rs.getInt("CourseID");
+                String courseName = rs.getString("CourseName");
                 String program = rs.getString("Program");
                 String instructor = rs.getString("Instructor");
                 String major = rs.getString("Major");
                 String schedule = rs.getString("Schedule");
                 String location = rs.getString("Location");
-		allCourses.add(new Courses(courseID, courseName, program, instructor, major, schedule, location));
-	    }
+                allCourses.add(new Courses(courseID, courseName, program, instructor, major, schedule, location));
+            }
 
-	} catch (SQLException e) {
-	    throw new RuntimeException(e);
-	}
-	return allCourses;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return allCourses;
 
+    }
+
+    public void save(Courses course) {
+        try {
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into courses (CourseID, CourseName, Program, Instructor, Major, Schedule, Location) values (?,?,?,?,?,?,?)");
+            ps.setInt(1, course.getCourseID());
+            ps.setString(2, course.getCourseName());
+            ps.setString(3, course.getProgram());
+            ps.setString(4, course.getInstructor());
+            ps.setString(5, course.getMajor());
+            ps.setString(6, course.getSchedule());
+            ps.setString(7, course.getLocation());
+
+            ps.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static boolean CourseValidate(String CourseID) {
@@ -107,6 +126,31 @@ public class CoursesDao {
         return status;
     }
 
+    public List<Courses> getOrderedCourses() {
+        List<Courses> allCourses = new ArrayList<Courses>();
+        try {
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM courses ORDER BY CourseID");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String courseName = rs.getString("CourseName");
+                String program = rs.getString("Program");
+                String instructor = rs.getString("Instructor");
+                String major = rs.getString("major");
+                String schedule = rs.getString("Schedule");
+                String location = rs.getString("Location");
+
+                allCourses.add(new Courses(courseName, program, instructor, major, schedule, location));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return allCourses;
+    }
+
     public static int DropingCourse(int CourseID, String LoginID) {
         int status = 0;
         try {
@@ -155,6 +199,11 @@ public class CoursesDao {
         } else {
             return 1;
         }
+    }
+
+    public static Connection getC() {
+        Connection con = DB.getConnection();
+        return con;
     }
 
 }

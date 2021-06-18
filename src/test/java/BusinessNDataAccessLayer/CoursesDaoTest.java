@@ -30,7 +30,7 @@ public class CoursesDaoTest {
     public void filterCourses() {
 
 	Courses course1 = new Courses(10,"Calculus 1","Major", "Akli Fundo", "Computer Engineering", "Tue 17:00-19:00", "AC33");
-        Courses course2 = new Courses(10,"Calculus 3","Minor", "Denisa Salillari", "Computer Engineering", "Fri 12:00-14:00", "BB19");
+        Courses course2 = new Courses(11,"Calculus 3","Minor", "Denisa Salillari", "Computer Engineering", "Fri 12:00-14:00", "BB19");
 
 	List<Courses> courses = Arrays.asList(course1, course2);
 

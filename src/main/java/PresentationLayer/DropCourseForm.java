@@ -16,6 +16,13 @@ import javax.swing.JOptionPane;
  */
 public class DropCourseForm extends javax.swing.JFrame {
 
+    String IFDate;
+    String courseID;
+    String userID;
+    
+    int CourseIDV;
+    String UserIDV;
+            
     /**
      * Creates new form DropCourseForm
      */
@@ -28,6 +35,14 @@ public class DropCourseForm extends javax.swing.JFrame {
         IMonth1.setText(String.valueOf(cal.get(Calendar.MONTH)+1));
         IYear1.setText(String.valueOf(cal.get(Calendar.YEAR)));
     }
+
+    public DropCourseForm(String IFDate, String courseID, String userID) {
+        this.IFDate = IFDate;
+        this.courseID = courseID;
+        this.userID = userID;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -337,19 +352,18 @@ public class DropCourseForm extends javax.swing.JFrame {
 
     private void DropCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DropCourseBtnActionPerformed
         // TODO add your handling code here:
-        int CourseIDV;
         CourseIDV = Integer.parseInt(CourseIdField.getText());
-        String UserIDV=PersonID;
+        UserIDV=PersonID;
         
-        String IFDate = IYear1.getText() + "-"+IMonth1.getText()+"-"+IDate1.getText();
+        IFDate = IYear1.getText() + "-"+IMonth1.getText()+"-"+IDate1.getText();
         System.out.println(IFDate);
 
         if(CoursesDao.CourseValidate(CourseIdField.getText()) && CoursesDao.UserValidate(UserIDfield.getText()))
         {
-               if(CoursesDao.CheckEnrollCourses(CourseIDV))
+               if(checkEnrollCourse(CourseIDV))
                {
                    
-                   if(CoursesDao.DropingCourse(CourseIDV, UserIDV)!=0)
+                   if(dropCourse(CourseIDV, UserIDV)!=0)
                    {
                         JOptionPane.showMessageDialog(DropCourseForm.this, "You dropped this course","Course Dropped!", JOptionPane.ERROR_MESSAGE);
                        // UserIDfield.setText("");
@@ -410,6 +424,14 @@ public class DropCourseForm extends javax.swing.JFrame {
                 new DropCourseForm().setVisible(true);
             }
         });
+    }
+    
+    public int dropCourse(int courseId, String userId){
+        return CoursesDao.DropingCourse(courseId, userId);
+    }
+    
+    public boolean checkEnrollCourse(int courseId){
+        return CoursesDao.CheckEnrollCourses(courseId);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -13,18 +13,28 @@ import static PresentationLayer.MainPage.ThisLogined;
 import BusinessNDataAccessLayer.CoursesDao;
 import static PresentationLayer.MainPage.PersonID;
 import static PresentationLayer.MainPage.Major;
+import java.awt.HeadlessException;
 //import PresentationLayer.MyCoursesListForm;
 /**
  *
  * @author user
  */
 public class AddCourseForm extends javax.swing.JFrame {
-
+    
+    String IFDate;
+    String RFDate;
+    String courseId;
+    String userId;
+    
+    int CourseIDV;
+    String UserIDV;
+    
     /**
      * Creates new form AddCourseForm
      */
     public AddCourseForm() {
         initComponents();
+        
         UserID.setText(PersonID); //setting the ID automatically in textfield
         //using calendar to display the data format in fields
         int year;
@@ -46,6 +56,15 @@ public class AddCourseForm extends javax.swing.JFrame {
         RMonth.setText(String.valueOf(addcal.get(Calendar.MONTH)+1)); //date ending in 1 month
         RYear.setText(String.valueOf(addcal.get(Calendar.YEAR)));
     }
+
+    public AddCourseForm(String IFDate, String RFDate, String courseId, String userId) throws HeadlessException {
+        this.IFDate = IFDate;
+        this.RFDate = RFDate;
+        this.courseId = courseId;
+        this.userId = userId;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -487,24 +506,24 @@ public class AddCourseForm extends javax.swing.JFrame {
 
     private void AddCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCourseBtnActionPerformed
         // TODO add your handling code here:
-        int CourseIDV;
         CourseIDV = Integer.parseInt(CourseIDField.getText());
-        String UserIDV=PersonID; //set the userID field to PersonID, which is genereated automatically from login
+        UserIDV=PersonID; //set the userID field to PersonID, which is genereated automatically from login
 
-        String IFDate = IYear.getText() + "-"+IMonth.getText()+"-"+IDate.getText();
-        String RFDate = RYear.getText() + "-"+RMonth.getText()+"-"+RDate.getText();
+        IFDate = IYear.getText() + "-"+IMonth.getText()+"-"+IDate.getText();
+        RFDate = RYear.getText() + "-"+RMonth.getText()+"-"+RDate.getText();
         System.out.println(IFDate);
         
-        System.out.println(PersonID);
-        System.out.println(Major);
+        userId = UserID.getText();
+        courseId = CourseIDField.getText();
+        
                          
-        if(CoursesDao.CourseValidate(CourseIDField.getText()) && CoursesDao.UserValidate(UserID.getText()))
+        if(validateCourse(userId) && validateUser(userId))
         {
             if(CoursesDao.Check(UserIDV)==0)
             JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
             else
             {
-                if(CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
+                if(enrollCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
                 {
 
                     JOptionPane.showMessageDialog(AddCourseForm.this, "The course enrolled!","Check your course list in profile", JOptionPane.ERROR_MESSAGE);
@@ -519,12 +538,12 @@ public class AddCourseForm extends javax.swing.JFrame {
         }
         
         else
-        {    if(CoursesDao.UserValidate(UserID.getText())){
+        {    if(validateUser(userId)){
             System.out.println("User ID:"+UserID.getText());
             JOptionPane.showMessageDialog(AddCourseForm.this, "Please choose a course of your major","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
            CourseIDField.setText("");}
            else
-            if(CoursesDao.CourseValidate(CourseIDField.getText()))
+            if(validateCourse(courseId))
             JOptionPane.showMessageDialog(AddCourseForm.this, "This course doesn't exist","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
             else
             JOptionPane.showMessageDialog(AddCourseForm.this, "The course and user doesn't exist!","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
@@ -565,6 +584,18 @@ public class AddCourseForm extends javax.swing.JFrame {
                 new AddCourseForm().setVisible(true);
             }
         });
+    }
+    
+    public boolean validateCourse(String courseID){
+        return CoursesDao.CourseValidate(courseID);
+    }
+    
+    public boolean validateUser(String userID){
+        return CoursesDao.UserValidate(userID);
+    }
+    
+    public int enrollCourse(int courseID, String userID, String ifDate, String rfDate ){
+        return CoursesDao.EnrollingCourse(courseID, userID, ifDate, rfDate);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
