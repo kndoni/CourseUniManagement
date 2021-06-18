@@ -18,6 +18,7 @@ public class SignUpFrame extends javax.swing.JFrame {
      */
     public SignUpFrame() {
         initComponents();
+         setLocationRelativeTo(null); /** vendos ne qender formen  */
     }
 
     /**
