@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author hoxha
+ * @author ndoni
  */
 public class UsersDao {
     
@@ -55,24 +55,29 @@ public class UsersDao {
         
     }
    
-    public static void saveUser(String username, String password, String fullName, String email, int age, String MajorN){
+    public static boolean saveUser(String username, String password, String fullName, String email, int age, String MajorN){
         Connection con=DB.getConnection();
+        boolean status=false;
         try {
             String input = "06-10-2013 18:29:09";
             SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy hh:mm:ss");
             java.util.Date dt = sdf.parse(input);
             java.sql.Date dtSql = new java.sql.Date(dt.getTime());
             
-            int returned = 0;
+            int returned = 4;
             
             PreparedStatement stat;
             ResultSet rs;
             String sql = "SELECT MAX(LoginID) AS LoginID FROM login";
             stat = con.prepareStatement(sql);
             rs = stat.executeQuery();
+            
+            status = rs.next();
+            System.out.println("usersdao" + status);
             if (rs.next()) {
                 returned = rs.getInt("LoginID") + 1;
             }
+            
             
             PreparedStatement ps = con.prepareStatement("insert into login (LoginID,UserName, Password, FullName, Email, Age, MajorN, RegDate) values (?,?,?,?,?,?,?,?)");
             ps.setInt(1, returned);
@@ -83,10 +88,25 @@ public class UsersDao {
             ps.setInt(6, age);
             ps.setString(7, MajorN);
             ps.setDate(8,dtSql);
-            
+            ps.execute();
+           
 
-	    ps.execute();
+	    //ps.execute();
         } catch(Exception e){System.out.println(e);}
+        return status;
     }
     
+    public static Connection getC() {
+	Connection con=DB.getConnection();
+        return con;
+    }
+    
+    public void close() {
+	try {
+	    Connection con=DB.getConnection();
+            con.close();
+	} catch (SQLException e) {
+	    throw new RuntimeException(e);
+	}
+    }
 }

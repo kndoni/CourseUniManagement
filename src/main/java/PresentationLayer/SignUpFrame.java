@@ -6,16 +6,73 @@
 package PresentationLayer;
 
 import BusinessNDataAccessLayer.UsersDao;
+import javax.swing.JTextField;
 
 /**
  *
  * @author user
  */
 public class SignUpFrame extends javax.swing.JFrame {
-
+    String Uname;
+    String Pass;
+    String FullName;
+    String Email;
+    int Age;
+    String Major;
+    
     /**
      * Creates new form SignUpFrame
      */
+    public SignUpFrame(String username, String password, String fullname, String email, int age, String major) {
+        initComponents();
+        this.Uname = username;
+        this.Pass = password;
+        this.FullName = fullname;
+        this.Email=email;
+        this.Age = age;
+        this.Major = major;
+    }
+
+    public String getUname() {
+        return Uname;
+    }
+
+    public void setUname(String Uname) {
+        this.Uname = Uname;
+    }
+
+    public String getPass() {
+        return Pass;
+    }
+
+    public void setPass(String Pass) {
+        this.Pass = Pass;
+    }
+
+    public String getFullName() {
+        return FullName;
+    }
+
+    public void setFullName(String FullName) {
+        this.FullName = FullName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getMajor() {
+        return Major;
+    }
+
+    public void setMajor(String Major) {
+        this.Major = Major;
+    }
+
     public SignUpFrame() {
         initComponents();
          setLocationRelativeTo(null); /** vendos ne qender formen  */
@@ -309,17 +366,20 @@ public class SignUpFrame extends javax.swing.JFrame {
 
     private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtn1ActionPerformed
         // TODO add your handling code here:
-        String Uname;
         Uname = usernameT.getText();
-        String Pass;
         Pass = String.valueOf(passwordT.getPassword());
-        String FullName = fullName.getText();
-        String Email = email.getText();
-        int Age = Integer.valueOf(age.getText());
-        String Major = major.getText();
+        FullName = fullName.getText();
+        Email = email.getText();
+        Age = Integer.valueOf(age.getText());
+        Major = major.getText();
         
-        UsersDao.saveUser(Uname, Pass, FullName, Email, Age, Major);
-        if(Pass != null){
+         
+        boolean status = signUpUser(Uname, Pass, FullName, Email, Age, Major);
+        
+        System.out.println(status);
+        
+        if(status==true)
+        {
             this.dispose();
             MainPage.main(new String[]{Uname,Pass});
         }
@@ -375,6 +435,17 @@ public class SignUpFrame extends javax.swing.JFrame {
                 new SignUpFrame().setVisible(true);
             }
         });
+    }
+    
+    public boolean signUpUser(String username, String password, String fullname, String email, int age, String major){
+        String Uname = username;
+        String Pass = password;
+        String FullName = fullname;
+        String Email = email;
+        int Age = age;
+        String Major = major;
+        
+        return UsersDao.saveUser(Uname, Pass, FullName, Email, Age, Major);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

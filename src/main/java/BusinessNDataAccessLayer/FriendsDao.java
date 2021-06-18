@@ -7,7 +7,7 @@ import PresentationLayer.DB;
 
 /**
  *
- * @author hoxha
+ * @author ndoni
  */
 public class FriendsDao {
 

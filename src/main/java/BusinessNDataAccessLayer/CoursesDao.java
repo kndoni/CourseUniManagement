@@ -1,133 +1,160 @@
 package BusinessNDataAccessLayer;
 
+import Models.Courses;
 import java.sql.*;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import PresentationLayer.DB;
 import PresentationLayer.MainPage;
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoursesDao {
 
     public static String major = MainPage.Major;
+
+    public static boolean checkBook(String courselno) {
+        boolean status = false;
+        try {
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from courses where CourseID=?");
+            ps.setString(1, courselno);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
     
-public static boolean checkBook(String courselno){
-	boolean status=false;
-	try{
-		Connection con=DB.getConnection();
-		PreparedStatement ps=con.prepareStatement("select * from courses where CourseID=?");
-		ps.setString(1,courselno);
-                ResultSet rs=ps.executeQuery();
-		status=rs.next();
-		con.close();
-	}catch(Exception e){System.out.println(e);}
-	return status;
+    public List<Courses> all() {
+
+	List<Courses> allCourses = new ArrayList<Courses>();
+
+	try {
+            Connection con = DB.getConnection();
+	    PreparedStatement ps = con.prepareStatement("select * from courses");
+
+	    ResultSet rs = ps.executeQuery();
+
+	    while (rs.next()) {
+		int courseID = rs.getInt("CourseID");
+		String courseName = rs.getString("CourseName");
+                String program = rs.getString("Program");
+                String instructor = rs.getString("Instructor");
+                String major = rs.getString("Major");
+                String schedule = rs.getString("Schedule");
+                String location = rs.getString("Location");
+		allCourses.add(new Courses(courseID, courseName, program, instructor, major, schedule, location));
+	    }
+
+	} catch (SQLException e) {
+	    throw new RuntimeException(e);
+	}
+	return allCourses;
+
+    }
+
+    public static boolean CourseValidate(String CourseID) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            System.out.println("ID qe vjen: " + CourseID);
+            System.out.println("Major e perdoruesit: " + major);
+            PreparedStatement ps = con.prepareStatement("select * from courses where CourseID = ? and Major='" + MainPage.Major + "'");
+            ps.setString(1, CourseID);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            System.out.println("Gjendja statusit: " + status);
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        System.out.println("Gjendja statusit: " + status);
+        return status;
+    }
+
+    public static boolean UserValidate(String LoginID) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            System.out.println("ID qe vjen: " + LoginID);
+            PreparedStatement ps = con.prepareStatement("select * from login where LoginID = ?");
+            ps.setString(1, LoginID);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            System.out.println("Gjendja statusit: " + status);
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
+    public static int EnrollingCourse(int CourseID, String LoginID, String IDate, String RDate) {
+        int status = 0;
+        try {
+
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("insert into enrollcourses values(?,?,?,?)");
+            ps.setInt(1, CourseID);
+            ps.setString(2, LoginID);
+            ps.setString(3, IDate);
+            ps.setString(4, RDate);
+            status = ps.executeUpdate();
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
+    public static int DropingCourse(int CourseID, String LoginID) {
+        int status = 0;
+        try {
+
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("delete from enrollcourses where CourseID=? and UserID=?");
+            ps.setInt(1, CourseID);
+            ps.setString(2, LoginID);
+            status = ps.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
+    public static boolean CheckEnrollCourses(int CourseID) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from enrollcourses where CourseID=?");
+            ps.setInt(1, CourseID);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
+
+    public static int Check(String LoginID) {
+        boolean status = false;
+        int num = 0;
+        try (Connection con = DB.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from course_count UserID=?");
+            ps.setString(2, LoginID);
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            num = rs.getInt("CourseNo");
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        if (num == 5) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
 }
-
-     public static boolean CourseValidate( String CourseID)
-    {
-    boolean status = false;
-    try(Connection con = DB.getConnection()) {
-         System.out.println("ID qe vjen: "+CourseID);
-         System.out.println("Major e perdoruesit: "+ major);
-        PreparedStatement ps = con.prepareStatement("select * from courses where CourseID = ? and Major='"+MainPage.Major+"'"); 
-        ps.setString(1, CourseID);
-        ResultSet rs=ps.executeQuery();
-        status=rs.next();
-        System.out.println("Gjendja statusit: "+status);
-        con.close();
-    }catch(Exception e){System.out.println(e);}
-    System.out.println("Gjendja statusit: "+status);
-    return status;
-}
-
-         public static boolean UserValidate(String LoginID)
-    {
-    boolean status = false;
-    try(Connection con = DB.getConnection()) {
-        System.out.println("ID qe vjen: "+LoginID);
-        PreparedStatement ps = con.prepareStatement("select * from login where LoginID = ?"); 
-        ps.setString(1, LoginID);
-        ResultSet rs=ps.executeQuery();
-        status=rs.next();
-        System.out.println("Gjendja statusit: "+status);
-        con.close();
-    }catch(Exception e){System.out.println(e);}
-    return status;
-}
-         
-
-
-public static int EnrollingCourse(int CourseID, String LoginID, String IDate, String RDate)
-{
-    int status =0;
-    try{
-        
-        Connection con =DB.getConnection();
-        PreparedStatement ps= con.prepareStatement("insert into enrollcourses values(?,?,?,?)");
-        ps.setInt(1,CourseID);
-        ps.setString(2, LoginID);
-        ps.setString(3,IDate);
-        ps.setString(4,RDate);
-        status =ps.executeUpdate();
-        con.close();
-        
-        
-}catch(Exception e){System.out.println(e);}
-    return status;
-}
-
-   
-    public static int DropingCourse(int CourseID,String LoginID)
-{
-    int status =0;
-    try{
-        
-        Connection con =DB.getConnection();
-        PreparedStatement ps= con.prepareStatement("delete from enrollcourses where CourseID=? and UserID=?");
-        ps.setInt(1,CourseID);
-        ps.setString(2, LoginID);
-        status =ps.executeUpdate();
-        con.close();
-}catch(Exception e){System.out.println(e);}
-    return status;
-}
-
-
-public static boolean CheckEnrollCourses(int CourseID)
-{
-    boolean status = false;
-    try(Connection con = DB.getConnection()) {
-        PreparedStatement ps = con.prepareStatement("select * from enrollcourses where CourseID=?"); 
-        ps.setInt(1, CourseID);
-        ResultSet rs=ps.executeQuery();
-        status=rs.next();
-        con.close();
-    }catch(Exception e){System.out.println(e);}
-    return status;
-}
-
-
-
-   public static int Check(String LoginID)
-   {
-       boolean status=false;
-       int num = 0;
-       try(Connection con = DB.getConnection()) {
-        PreparedStatement ps = con.prepareStatement("select * from course_count UserID=?"); 
-        ps.setString(2, LoginID);
-        ResultSet rs=ps.executeQuery();
-        status=rs.next();
-        num = rs.getInt("CourseNo");
-        con.close();
-    }catch(Exception e){System.out.println(e);}
-       if(num==5)
-           return 0;
-       else
-           return 1;
-   }
-
- 
-       
-   }
-    
-
-

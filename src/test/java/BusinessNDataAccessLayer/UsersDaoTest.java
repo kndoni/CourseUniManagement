@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
 
 /**
  *
@@ -30,10 +31,10 @@ public class UsersDaoTest {
         boolean value1 = signUp1.signUpUser("user1", "user1", "user1 user1", "user1@email.com", 21, "major1");
         
         SignUpFrame signUp2 = new SignUpFrame();
-        boolean value2 = signUp2.signUpUser("user2", "user2", "user2 user2", "user2@email.com", 21, "major2");
+        boolean value2 = signUp2.signUpUser("user2", "user2", "user2 user2", "user2@email.com", 22, "major2");
         
         SignUpFrame signUp3 = new SignUpFrame();
-        boolean value3 = signUp3.signUpUser("user2", "user2", "user2 user2", "user2@email.com", 21, "major2");
+        boolean value3 = signUp3.signUpUser("user3", "user3", "use3 user3", "user3@email.com", 23, "major3");
         
         boolean result1 = UsersDao.CheckIfAlready("user1");
         boolean result2 = UsersDao.CheckIfAlready("user2");
@@ -51,7 +52,7 @@ public class UsersDaoTest {
          Assert.assertEquals(result2, value2);
     }
     
-    @After
+    @AfterAll
     public void cleanDatabase() {
 	try {
 	    PreparedStatement ps = (PreparedStatement) UsersDao.getC().prepareStatement("delete from login");
@@ -62,7 +63,7 @@ public class UsersDaoTest {
 		}
     }
 
-    @After
+    @AfterAll
     public void closeConnection() {
 	usersDao.close();
     }
