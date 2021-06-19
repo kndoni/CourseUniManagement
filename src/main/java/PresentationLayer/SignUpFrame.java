@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This frame is used to sign up a new user.
  */
 package PresentationLayer;
 
@@ -10,7 +8,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author user
+ * @author ndoni, tahiraj, muco
  */
 public class SignUpFrame extends javax.swing.JFrame {
     String Uname;
@@ -21,7 +19,7 @@ public class SignUpFrame extends javax.swing.JFrame {
     String Major;
     
     /**
-     * Creates new form SignUpFrame
+     * Creates new form SignUpFrame, initializes the frame with parameters.
      */
     public SignUpFrame(String username, String password, String fullname, String email, int age, String major) {
         initComponents();
@@ -32,50 +30,13 @@ public class SignUpFrame extends javax.swing.JFrame {
         this.Age = age;
         this.Major = major;
     }
-
-    public String getUname() {
-        return Uname;
-    }
-
-    public void setUname(String Uname) {
-        this.Uname = Uname;
-    }
-
-    public String getPass() {
-        return Pass;
-    }
-
-    public void setPass(String Pass) {
-        this.Pass = Pass;
-    }
-
-    public String getFullName() {
-        return FullName;
-    }
-
-    public void setFullName(String FullName) {
-        this.FullName = FullName;
-    }
-
-    public String getEmail() {
-        return Email;
-    }
-
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-
-    public String getMajor() {
-        return Major;
-    }
-
-    public void setMajor(String Major) {
-        this.Major = Major;
-    }
-
+ 
+    /**
+    * Creates a new empty frame.
+    */
     public SignUpFrame() {
         initComponents();
-         setLocationRelativeTo(null); /** vendos ne qender formen  */
+         setLocationRelativeTo(null); /** places the form at center  */
     }
 
     /**
@@ -94,7 +55,7 @@ public class SignUpFrame extends javax.swing.JFrame {
         passwordT = new javax.swing.JPasswordField();
         LoginBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        LoginBtn1 = new javax.swing.JButton();
+        SignUpBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -109,8 +70,6 @@ public class SignUpFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\school.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,16 +133,16 @@ public class SignUpFrame extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Sign Up");
 
-        LoginBtn1.setBackground(new java.awt.Color(186, 79, 64));
-        LoginBtn1.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        LoginBtn1.setForeground(new java.awt.Color(255, 255, 255));
-        LoginBtn1.setText("Register");
-        LoginBtn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        LoginBtn1.setBorderPainted(false);
-        LoginBtn1.setContentAreaFilled(false);
-        LoginBtn1.addActionListener(new java.awt.event.ActionListener() {
+        SignUpBtn.setBackground(new java.awt.Color(186, 79, 64));
+        SignUpBtn.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        SignUpBtn.setForeground(new java.awt.Color(255, 255, 255));
+        SignUpBtn.setText("Register");
+        SignUpBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        SignUpBtn.setBorderPainted(false);
+        SignUpBtn.setContentAreaFilled(false);
+        SignUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginBtn1ActionPerformed(evt);
+                SignUpBtnActionPerformed(evt);
             }
         });
 
@@ -281,7 +240,7 @@ public class SignUpFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lineLayout.createSequentialGroup()
                         .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(LoginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(usernameT)
                         .addComponent(passwordT)
@@ -327,7 +286,7 @@ public class SignUpFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(lineLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SignUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
@@ -364,7 +323,11 @@ public class SignUpFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_LoginBtnActionPerformed
 
-    private void LoginBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtn1ActionPerformed
+    /**
+    * This button connects to usersDao class to register a new user
+    * to the database.
+    */
+    private void SignUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignUpBtnActionPerformed
         // TODO add your handling code here:
         Uname = usernameT.getText();
         Pass = String.valueOf(passwordT.getPassword());
@@ -384,7 +347,7 @@ public class SignUpFrame extends javax.swing.JFrame {
             MainPage.main(new String[]{Uname,Pass});
         }
         
-    }//GEN-LAST:event_LoginBtn1ActionPerformed
+    }//GEN-LAST:event_SignUpBtnActionPerformed
 
     private void fullNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullNameActionPerformed
         // TODO add your handling code here:
@@ -450,7 +413,7 @@ public class SignUpFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginBtn;
-    private javax.swing.JButton LoginBtn1;
+    private javax.swing.JButton SignUpBtn;
     private javax.swing.JTextField age;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fullName;

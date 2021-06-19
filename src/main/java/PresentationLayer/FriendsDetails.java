@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This frame is used to display my friends details.
  */
 package PresentationLayer;
 
@@ -22,12 +20,12 @@ import static PresentationLayer.MainPage.PersonID;
 
 /**
  *
- * @author user
+ * @author ndoni, tahiraj, muco
  */
 public class FriendsDetails extends javax.swing.JFrame {
 
     /**
-     * Creates new form FriendsDetails
+     * Creates new form FriendsDetails, displays into a table all the courses that my friends enrolled.
      */
     public FriendsDetails() throws SQLException {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);

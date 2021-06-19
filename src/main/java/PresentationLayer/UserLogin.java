@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This form is used to verify the user password
+ * before he goes to my profile section and make a change there.
  */
 package PresentationLayer;
 
@@ -13,7 +12,7 @@ import BusinessNDataAccessLayer.UsersDao;
 import static PresentationLayer.MainPage.PersonID;
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class UserLogin extends javax.swing.JFrame {
 
@@ -197,6 +196,9 @@ public class UserLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordActionPerformed
 
+    /**
+    * This button verifies the login password of the user and enables him to go to my profile section.
+    */
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
          String User=PersonID;

@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class is used to create a connection with the project database.
  */
 package PresentationLayer;
 
@@ -13,7 +11,7 @@ import java.util.Properties;
 
 /**
  *
- * @author kristi
+ * @author ndoni, tahiraj, muco
  */
 public class DB {
     public static Connection getConnection() {

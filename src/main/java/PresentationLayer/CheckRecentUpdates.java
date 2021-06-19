@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This form displays the recent updates, as latest  
+ * courses that my friends have enrolled.
  */
 package PresentationLayer;
 
@@ -23,12 +22,13 @@ import static java.util.logging.Level.ALL;
 
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class CheckRecentUpdates extends javax.swing.JFrame {
 
     /**
-     * Creates new form CheckRecentUpdates
+     * Creates new form CheckRecentUpdates, here we display
+     * to a table inside the form all the enrolled courses of our friends.
      */
     public CheckRecentUpdates() {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -252,10 +252,9 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NameRadio)
-                            .addComponent(CourseIDRadio))))
+                        .addComponent(NameRadio)
+                        .addComponent(CourseIDRadio))
+                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -293,6 +292,10 @@ public class CheckRecentUpdates extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchFieldActionPerformed
 
+     /**
+    * This button is used to search or filter for friends or courses that
+    * our friends have enrolled into.
+    */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
              DefaultTableModel model;

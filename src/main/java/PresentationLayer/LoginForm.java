@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This is the login form in which a user can authenticate and access the application.
  */
 package PresentationLayer;
 
@@ -10,7 +8,7 @@ import BusinessNDataAccessLayer.LoginDao;
 
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class LoginForm extends javax.swing.JFrame {
 
@@ -19,7 +17,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();   
-        setLocationRelativeTo(null); /** vendos ne qender formen  */
+        setLocationRelativeTo(null); /** places the form to the center of the screen  */
     }
 
     /**
@@ -252,6 +250,10 @@ public class LoginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTActionPerformed
 
+     /**
+    * This button is pressed after the user has typed username and password,
+    * it calls a function from loginDao to validate if the user is existing in database.
+    */
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
         String Uname;

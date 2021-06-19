@@ -161,9 +161,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\enrollCourse.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -232,9 +229,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\comments.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -271,7 +265,7 @@
                           <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
                           <Component id="DropCourseBtn" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -300,9 +294,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\cancleCourse.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -328,7 +319,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="UpdatesBtn" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="CheckAttendeesBtn" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -341,7 +332,7 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jTextField4" min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="UpdatesBtn" min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="CheckAttendeesBtn" min="-2" pref="33" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -367,20 +358,17 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="UpdatesBtn">
+            <Component class="javax.swing.JButton" name="CheckAttendeesBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\check.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatesBtnActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckAttendeesBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -400,7 +388,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="UpdatesBtn2" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="AddFriendsBtn" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jTextField6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -414,7 +402,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="UpdatesBtn2" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="AddFriendsBtn" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -441,20 +429,17 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="UpdatesBtn2">
+            <Component class="javax.swing.JButton" name="AddFriendsBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\add-friend.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdatesBtn2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddFriendsBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
@@ -474,7 +459,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="UpdatesBtn3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="CheckFriendsBtn" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jTextField7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -489,7 +474,7 @@
                           <Component id="jTextField7" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="UpdatesBtn3" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="CheckFriendsBtn" min="-2" pref="33" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -516,13 +501,10 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="UpdatesBtn3">
+            <Component class="javax.swing.JButton" name="CheckFriendsBtn">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\friends-course-list.png"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -593,9 +575,6 @@
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="0" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\profile.png"/>
-                </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
@@ -647,7 +626,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="messageTxt" min="-2" pref="142" max="-2" attributes="0"/>
                           <EmptySpace pref="490" max="32767" attributes="0"/>
-                          <Component id="jButton8" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="LogoutBtn" min="-2" pref="34" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -667,7 +646,7 @@
                           <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton8" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="LogoutBtn" alignment="0" min="-2" pref="33" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
@@ -716,20 +695,17 @@
             <Property name="text" type="java.lang.String" value="Welcome"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton8">
+        <Component class="javax.swing.JButton" name="LogoutBtn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\User\Desktop\CourseUniManagement\src\main\java\images\logout.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogoutBtnActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

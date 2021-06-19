@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Drop course form is a frame that allows the user the functionality,
+ * to drop a certain course by filtering it with course ID.
  */
 package PresentationLayer;
 
@@ -12,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author user
+ * @author ndoni, tahiraj, muco
  */
 public class DropCourseForm extends javax.swing.JFrame {
 
@@ -24,7 +23,7 @@ public class DropCourseForm extends javax.swing.JFrame {
     String UserIDV;
             
     /**
-     * Creates new form DropCourseForm
+     * Creates new form DropCourseForm with actual date.
      */
     public DropCourseForm() {
         initComponents();
@@ -36,6 +35,9 @@ public class DropCourseForm extends javax.swing.JFrame {
         IYear1.setText(String.valueOf(cal.get(Calendar.YEAR)));
     }
 
+    /**
+    * Initializes drop course form with set parameters of enrolled courses table.
+    */
     public DropCourseForm(String IFDate, String courseID, String userID) {
         this.IFDate = IFDate;
         this.courseID = courseID;
@@ -350,6 +352,10 @@ public class DropCourseForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_IYear1ActionPerformed
 
+     /**
+    * This button allows the user to drop a certain course, after the validations
+    * of user and course are done.
+    */
     private void DropCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DropCourseBtnActionPerformed
         // TODO add your handling code here:
         CourseIDV = Integer.parseInt(CourseIdField.getText());

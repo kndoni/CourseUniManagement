@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This form is my profile section for the user, in which we can update
+ * his profile details.
  */
 package PresentationLayer;
 
@@ -15,12 +14,13 @@ import static PresentationLayer.MainPage.ThisLogined;
 
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class UserLoginSuccess extends javax.swing.JFrame {
 
     /**
-     * Creates new form UserLoginSuccess
+     * Creates new form UserLoginSuccess, some of the values are preset from
+     * the user that is already logged into the application.
      */
     public static String GetName,PersonID,GetEmail,GetRegDate,GetAge,GetMajor;
     public UserLoginSuccess() {
@@ -261,6 +261,10 @@ public class UserLoginSuccess extends javax.swing.JFrame {
         ThisLogined.setVisible(true);
     }//GEN-LAST:event_BackToBtnActionPerformed
 
+    /**
+    * This button contacts with user dao class and updates the user
+    * details and add them to the database.
+    */
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         // TODO add your handling code here:
         try{

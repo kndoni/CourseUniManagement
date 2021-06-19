@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * My courses list form is used to display all
+ * courses a user has already enrolled.
  */
 package PresentationLayer;
 
@@ -22,42 +21,44 @@ import static PresentationLayer.MainPage.PersonID;
 
 /**
  *
- * @author user
+ * @author ndoni, tahiraj, muco
  */
 public class MyCoursesListForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form MyCoursesListForm
+     * Creates new form MyCoursesListForm, also collects all the values from enrolled courses
+     * and displays them to a table in the form.
      */
     public MyCoursesListForm() throws SQLException {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-         
+
         initComponents();
-        
-        int UserIDV =Integer.parseInt(PersonID);
+
+        int UserIDV = Integer.parseInt(PersonID);
         DefaultTableModel model;
         model = (DefaultTableModel) MyCourseListTable.getModel();
 
-        try(Connection Con = DB.getConnection()) {
-            PreparedStatement ps=Con.prepareStatement("select enrollcourses.CourseID,courses.CourseName, enrollcourses.IssueDate, enrollcourses.ReturnDate from courses,enrollcourses where courses.CourseID=enrollcourses.CourseID and enrollcourses.UserID=?",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ps.setInt(1,UserIDV);
-            ResultSet rs= ps.executeQuery();
-            
-           ResultSetMetaData rsmd = rs.getMetaData();
-  
-            int colnum=rsmd.getColumnCount();
- 
+        try (Connection Con = DB.getConnection()) {
+            PreparedStatement ps = Con.prepareStatement("select enrollcourses.CourseID,courses.CourseName, enrollcourses.IssueDate, enrollcourses.ReturnDate from courses,enrollcourses where courses.CourseID=enrollcourses.CourseID and enrollcourses.UserID=?", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ps.setInt(1, UserIDV);
+            ResultSet rs = ps.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int colnum = rsmd.getColumnCount();
+
             String Row[];
             Row = new String[colnum];
-            while(rs.next()){
-                for(int i=1;i<=colnum;i++){
-                    Row[i-1]=rs.getString(i);
-                    }
-                 model.addRow(Row);
+            while (rs.next()) {
+                for (int i = 1; i <= colnum; i++) {
+                    Row[i - 1] = rs.getString(i);
+                }
+                model.addRow(Row);
             }
- 
-           Con.close();
-          }catch(Exception e){System.out.println(e);
+
+            Con.close();
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 
@@ -262,15 +263,15 @@ public class MyCoursesListForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-               try {
+                try {
                     new MyCoursesListForm().setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(MyCoursesListForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
-        
-         PersonID = args[0];
+
+        PersonID = args[0];
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
