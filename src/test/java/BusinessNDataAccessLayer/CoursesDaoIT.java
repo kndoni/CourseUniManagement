@@ -6,6 +6,7 @@
 package BusinessNDataAccessLayer;
 
 import Models.Courses;
+import Models.EnrolledCourses;
 import PresentationLayer.AddCourseForm;
 import PresentationLayer.DropCourseForm;
 import java.sql.PreparedStatement;
@@ -29,10 +30,10 @@ public class CoursesDaoIT {
      */
     @Test
     public void testCheckBook() {
-        Courses course1 = new Courses("Calculus 1","Major", "Akli Fundo", "Computer Engineering", "Tue 17:00-19:00", "AC33");
-        Courses course2 = new Courses("Calculus 3","Minor", "Denisa Salillari", "Computer Engineering", "Fri 12:00-14:00", "BB19");
-        Courses course3 = new Courses("Algebra","Major", "Dritan Nace", "Computer Engineering", "Tue 09:00-12:00", "AC33");
-        Courses course4 = new Courses("Signal Theory","Major", "Ilir Shinko", "Computer Engineering", "Thur 10:00-12:00", "BB19");
+        Courses course1 = new Courses(5,"Calculus 1","Major", "Akli Fundo", "Computer Engineering", "Tue 17:00-19:00", "AC33");
+        Courses course2 = new Courses(6,"Calculus 3","Minor", "Denisa Salillari", "Computer Engineering", "Fri 12:00-14:00", "BB19");
+        Courses course3 = new Courses(7,"Algebra","Major", "Dritan Nace", "Computer Engineering", "Tue 09:00-12:00", "AC33");
+        Courses course4 = new Courses(8,"Signal Theory","Major", "Ilir Shinko", "Computer Engineering", "Thur 10:00-12:00", "BB19");
         
 	coursesDao.save(course1);
 	coursesDao.save(course2);
@@ -45,7 +46,10 @@ public class CoursesDaoIT {
         
         Assert.assertEquals(value,result.get(0).getCourseName().equals("Networking"));
 	Assert.assertEquals("Calculus 1", result.get(4).getCourseName());
-	Assert.assertEquals(0, result.get(5).getCourseID());
+        Assert.assertEquals("Major", result.get(4).getProgram());
+        Assert.assertEquals("Mon 16:00 - 18:00", result.get(0).getSchedule());
+        Assert.assertEquals("3FE", result.get(0).getLocation());
+	Assert.assertEquals(6, result.get(5).getCourseID());
 	Assert.assertEquals("Dritan Nace", result.get(6).getInstructor());
         Assert.assertEquals("Computer Engineering", result.get(7).getMajor());
 	Assert.assertEquals(8, result.size());
@@ -125,16 +129,18 @@ public class CoursesDaoIT {
      */
     @Test
     public void testCheckEnrollCourses() {
+         List<EnrolledCourses> result = coursesDao.enrolledCourses();
+         
+         boolean status=false;
+         if(result.get(0).getCourseId() == 1)
+             status=true;
+         
+         Assert.assertEquals(CoursesDao.CheckEnrollCourses(1),status);
     }
 
     /**
      * Test of Check method, of class CoursesDao.
      */
-    @Test
-    public void testCheck() {
-        Assert.assertEquals(CoursesDao.Check("1"), 1);
-        //Assert.assertEquals(CoursesDao.Check, this);
-    }
     
     @After
     public void cleanDatabase() {

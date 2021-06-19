@@ -26,74 +26,34 @@ public class Courses {
         this.Major = Major;
         this.Schedule = Schedule;
         this.Location = Location;
-    }
-
-    public Courses(String CourseName, String Program, String Instructor, String Major, String Schedule, String Location) {
-        this.CourseName = CourseName;
-        this.Program = Program;
-        this.Instructor = Instructor;
-        this.Major = Major;
-        this.Schedule = Schedule;
-        this.Location = Location;
-    }
-    
-    
+    }  
 
     public int getCourseID() {
         return CourseID;
     }
-
-    public void setCourseID(int CourseID) {
-        this.CourseID = CourseID;
-    }
-
+    
     public String getCourseName() {
         return CourseName;
     }
 
-    public void setCourseName(String CourseName) {
-        this.CourseName = CourseName;
+    public String getMajor() {
+        return Major;
+    } 
+
+    public String getInstructor() {
+        return Instructor;
     }
 
     public String getProgram() {
         return Program;
     }
 
-    public void setProgram(String Program) {
-        this.Program = Program;
-    }
-
-    public String getInstructor() {
-        return Instructor;
-    }
-
-    public void setInstructor(String Instructor) {
-        this.Instructor = Instructor;
-    }
-
-    public String getMajor() {
-        return Major;
-    }
-
-    public void setMajor(String Major) {
-        this.Major = Major;
-    }
-
     public String getSchedule() {
         return Schedule;
-    }
-
-    public void setSchedule(String Schedule) {
-        this.Schedule = Schedule;
     }
 
     public String getLocation() {
         return Location;
     }
-
-    public void setLocation(String Location) {
-        this.Location = Location;
-    }
-    
-    
+  
 }

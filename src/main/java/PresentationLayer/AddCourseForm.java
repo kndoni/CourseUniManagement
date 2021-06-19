@@ -519,10 +519,7 @@ public class AddCourseForm extends javax.swing.JFrame {
                          
         if(validateCourse(userId) && validateUser(userId))
         {
-            if(CoursesDao.Check(UserIDV)==0)
-            JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
-            else
-            {
+           
                 if(enrollCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
                 {
 
@@ -533,7 +530,6 @@ public class AddCourseForm extends javax.swing.JFrame {
                
                 else 
                 JOptionPane.showMessageDialog(AddCourseForm.this, "Unable to enroll course","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
-            }
 
         }
         

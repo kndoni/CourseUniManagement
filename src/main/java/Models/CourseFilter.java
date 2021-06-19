@@ -32,6 +32,19 @@ public class CourseFilter {
 	}
 
 	return filtered;
-
+    }
+    
+    public List<EnrolledCourses> filterEnrolled(){
+        
+        List<EnrolledCourses> enrollCourse = coursesDao.enrolledCourses();
+        
+        List<EnrolledCourses> filterEnrolledCourses = new ArrayList<EnrolledCourses>();
+        
+        for(EnrolledCourses course : enrollCourse){
+            if(course.getCourseId()>=1)
+                filterEnrolledCourses.add(course);
+            
+        }
+        return filterEnrolledCourses;
     }
 }

@@ -1,6 +1,7 @@
 package BusinessNDataAccessLayer;
 
 import Models.Courses;
+import Models.EnrolledCourses;
 import java.sql.*;
 import PresentationLayer.DB;
 import PresentationLayer.MainPage;
@@ -51,6 +52,31 @@ public class CoursesDao {
             throw new RuntimeException(e);
         }
         return allCourses;
+
+    }
+    
+    public List<EnrolledCourses> enrolledCourses() {
+
+        List<EnrolledCourses> enrollCourses = new ArrayList<EnrolledCourses>();
+
+        try {
+            Connection con = DB.getConnection();
+            PreparedStatement ps = con.prepareStatement("select * from enrollcourses");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int courseID = rs.getInt("CourseID");
+                String userID = rs.getString("UserID");
+                String issueDate = rs.getString("IssueDate");
+                String returnDate = rs.getString("ReturnDate");    
+                enrollCourses.add(new EnrolledCourses(courseID, userID, issueDate, returnDate));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return enrollCourses;
 
     }
 
@@ -135,6 +161,7 @@ public class CoursesDao {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
+                int courseId= rs.getInt("CourseID");
                 String courseName = rs.getString("CourseName");
                 String program = rs.getString("Program");
                 String instructor = rs.getString("Instructor");
@@ -142,7 +169,7 @@ public class CoursesDao {
                 String schedule = rs.getString("Schedule");
                 String location = rs.getString("Location");
 
-                allCourses.add(new Courses(courseName, program, instructor, major, schedule, location));
+                allCourses.add(new Courses(courseId,courseName, program, instructor, major, schedule, location));
             }
 
         } catch (SQLException e) {
@@ -181,25 +208,26 @@ public class CoursesDao {
         return status;
     }
 
-    public static int Check(String LoginID) {
-        boolean status = false;
-        int num = 0;
-        try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from course_count UserID=?");
-            ps.setString(2, LoginID);
-            ResultSet rs = ps.executeQuery();
-            status = rs.next();
-            num = rs.getInt("CourseNo");
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        if (num == 5) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
+//    public static int Check(String LoginID) {
+//        boolean status = false;
+//        int num = 0;
+//        try (Connection con = DB.getConnection()) {
+//            PreparedStatement ps = con.prepareStatement("select * from course_count where UserID=?");
+//            ps.setString(2, LoginID);
+//            ResultSet rs = ps.executeQuery();
+//            status = rs.next();
+//            num = rs.getInt("CourseNo"); 
+//            con.close();
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//         System.out.println("Vlera numrit  "+ num);
+//        if (num == 5) {
+//            return 0;
+//        } else {
+//            return 1;
+//        }
+//    }
 
     public static Connection getC() {
         Connection con = DB.getConnection();

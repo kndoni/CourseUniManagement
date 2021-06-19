@@ -5,8 +5,11 @@
  */
 package BusinessNDataAccessLayer;
 
+import static BusinessNDataAccessLayer.CoursesDaoIT.coursesDao;
 import Models.CourseFilter;
 import Models.Courses;
+import Models.EnrolledCourses;
+import PresentationLayer.AddCourseForm;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,12 +56,13 @@ public class CoursesDaoTest {
     public void testEnrollingCourse() {
         coursesDao = EasyMock.mock(CoursesDao.class);
 
-	EasyMock.expect(coursesDao.all()).andReturn(new ArrayList<Courses>());
+	EasyMock.expect(coursesDao.enrolledCourses()).andReturn(new ArrayList<EnrolledCourses>());
 	EasyMock.replay(coursesDao);
 
 	CourseFilter courseFilter = new CourseFilter(coursesDao);
-	List<Courses> result = courseFilter.filter();
+	List<EnrolledCourses> result = courseFilter.filterEnrolled();
 
 	Assert.assertEquals(0, result.size());
     }
+    
 }
