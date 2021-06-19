@@ -29,7 +29,8 @@ public class AddFriendForm extends javax.swing.JFrame {
      */
     public AddFriendForm() {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        initComponents();
+        initComponents(); 
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         UserIDField.setText(PersonID);
         DefaultTableModel model;
         model = (DefaultTableModel) FriendsListTable.getModel();
