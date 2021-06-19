@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This is model class of courses table, created mainly for 
+ * testing purposes. It contains all the fields of the courses table.
  */
 package Models;
 
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class Courses {
     private int CourseID;
@@ -18,6 +17,9 @@ public class Courses {
     private String Schedule;
     private String Location;
 
+     /**
+    * Initialization of the constructor of the courses model class.
+    */
     public Courses(int CourseID, String CourseName, String Program, String Instructor, String Major, String Schedule, String Location) {
         this.CourseID = CourseID;
         this.CourseName = CourseName;
@@ -28,6 +30,10 @@ public class Courses {
         this.Location = Location;
     }  
 
+     /**
+    * Below are the get methods for each field,
+    * they are used to retrieve fields values in other classes.
+    */
     public int getCourseID() {
         return CourseID;
     }

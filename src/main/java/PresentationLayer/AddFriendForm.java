@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This is the form of add friends, where user
+ * can add a new friend.
  */
 package PresentationLayer;
 
@@ -18,14 +17,16 @@ import PresentationLayer.DB;
 import BusinessNDataAccessLayer.FriendsDao;
 import static PresentationLayer.MainPage.ThisLogined;
 import static PresentationLayer.MainPage.PersonID;
+
 /**
  *
- * @author user
+ * @author ndoni, muco, tahiraj
  */
 public class AddFriendForm extends javax.swing.JFrame {
 
     /**
-     * Creates new form AddFriendForm
+     * Creates new form AddFriendForm, by initializing the constructor.
+     * Prints all the values of friends table into a table component, to display them to form.
      */
     public AddFriendForm() {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -34,28 +35,29 @@ public class AddFriendForm extends javax.swing.JFrame {
         UserIDField.setText(PersonID);
         DefaultTableModel model;
         model = (DefaultTableModel) FriendsListTable.getModel();
-     
+
         //getting the connection from database, in table login
-        try(Connection Con = DB.getConnection()) {
-            PreparedStatement ps=Con.prepareStatement("select * from login",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs= ps.executeQuery();
-            
-           ResultSetMetaData rsmd = rs.getMetaData();
-  
-            int colnum=rsmd.getColumnCount();
-            
+        try (Connection Con = DB.getConnection()) {
+            PreparedStatement ps = Con.prepareStatement("select * from login", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs = ps.executeQuery();
+
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            int colnum = rsmd.getColumnCount();
+
             String Row[];
             Row = new String[colnum];
-            while(rs.next()){
-                for(int i=1;i<=colnum;i++){
-                    Row[i-1]=rs.getString(i);
-                    }
-                 model.addRow(Row);
+            while (rs.next()) {
+                for (int i = 1; i <= colnum; i++) {
+                    Row[i - 1] = rs.getString(i);
+                }
+                model.addRow(Row);
             }
 
-           Con.close();
-        }catch(Exception e){System.out.println(e);
-     } 
+            Con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     /**
@@ -294,43 +296,40 @@ public class AddFriendForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+     /**
+    * This button is used to add a new friend to friends list, 
+    * after the user and the friend is validated.
+    */
     private void AddFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendBtnActionPerformed
         // TODO add your handling code here:
         int friendshipIDV;
         friendshipIDV = Integer.parseInt(friendIDField.getText());
-        String UserIDV=PersonID;
-  
-        if(FriendsDao.FriendValidate(friendIDField.getText()) && FriendsDao.UserValidate(UserIDField.getText()))
-        {
-           if(friendIDField.getText().equals(UserIDField.getText())) {
-          JOptionPane.showMessageDialog(AddFriendForm.this, "You cant add yourself as friend","Friendship Error!", JOptionPane.ERROR_MESSAGE);
+        String UserIDV = PersonID;
+
+        if (FriendsDao.FriendValidate(friendIDField.getText()) && FriendsDao.UserValidate(UserIDField.getText())) {
+            if (friendIDField.getText().equals(UserIDField.getText())) {
+                JOptionPane.showMessageDialog(AddFriendForm.this, "You cant add yourself as friend", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
+            } else if (FriendsDao.Check(UserIDV) == 0) {
+                JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend to list", "Friendship error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (FriendsDao.addFriend(friendshipIDV, UserIDV) != 0) {
+
+                    JOptionPane.showMessageDialog(AddFriendForm.this, "Friend added!", "Check your friend's list in profile", JOptionPane.ERROR_MESSAGE);
+                    friendIDField.setText("");
+                    // UserIDField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend!", "Friendship error!", JOptionPane.ERROR_MESSAGE);
                 }
-           
-           else if(FriendsDao.Check(UserIDV)==0)
-               JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend to list","Friendship error!", JOptionPane.ERROR_MESSAGE); 
-           else
-            {
-            if(FriendsDao.addFriend(friendshipIDV, UserIDV)!=0)
-            {
-              
-                JOptionPane.showMessageDialog(AddFriendForm.this, "Friend added!","Check your friend's list in profile", JOptionPane.ERROR_MESSAGE);
-                friendIDField.setText("");
-               // UserIDField.setText("");
             }
-            else
-              JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend!","Friendship error!", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            if (FriendsDao.UserValidate(UserIDField.getText())) {
+                JOptionPane.showMessageDialog(AddFriendForm.this, "This friend doesn't exist!", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
+            } else if (FriendsDao.FriendValidate(friendIDField.getText())) {
+                JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend!", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
             }
-            
-            
-        }
-        else
-        {    if(FriendsDao.UserValidate(UserIDField.getText()))
-                    JOptionPane.showMessageDialog(AddFriendForm.this, "This friend doesn't exist!","Friendship Error!", JOptionPane.ERROR_MESSAGE);
-             else
-                if(FriendsDao.FriendValidate(friendIDField.getText()))
-                    JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend!","Friendship Error!", JOptionPane.ERROR_MESSAGE);
-                 else
-            JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend","Friendship Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_AddFriendBtnActionPerformed
 
