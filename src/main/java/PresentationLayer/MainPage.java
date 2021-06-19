@@ -88,11 +88,11 @@ public class MainPage extends javax.swing.JFrame {
         DropCourseBtn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
-        CheckAttendeesBtn = new javax.swing.JButton();
+        UpdatesBtn = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
-        AddFriendsBtn = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
+        UpdatesBtn2 = new javax.swing.JButton();
+        UpdatesBtn3 = new javax.swing.JPanel();
         jTextField7 = new javax.swing.JTextField();
         CheckFriendsBtn = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
@@ -102,7 +102,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        LogoutBtn = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         CourseInfoTable = new javax.swing.JTable();
@@ -231,11 +231,11 @@ public class MainPage extends javax.swing.JFrame {
         jTextField4.setText("Check attendees");
         jTextField4.setBorder(null);
 
-        CheckAttendeesBtn.setBackground(new java.awt.Color(0, 102, 102));
-        CheckAttendeesBtn.setBorder(null);
-        CheckAttendeesBtn.addActionListener(new java.awt.event.ActionListener() {
+        UpdatesBtn.setBackground(new java.awt.Color(0, 102, 102));
+        UpdatesBtn.setBorder(null);
+        UpdatesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckAttendeesBtnActionPerformed(evt);
+                UpdatesBtnActionPerformed(evt);
             }
         });
 
@@ -245,7 +245,7 @@ public class MainPage extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(CheckAttendeesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdatesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -256,7 +256,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CheckAttendeesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UpdatesBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -270,11 +270,11 @@ public class MainPage extends javax.swing.JFrame {
         jTextField6.setText("Add friends");
         jTextField6.setBorder(null);
 
-        AddFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
-        AddFriendsBtn.setBorder(null);
-        AddFriendsBtn.addActionListener(new java.awt.event.ActionListener() {
+        UpdatesBtn2.setBackground(new java.awt.Color(0, 102, 102));
+        UpdatesBtn2.setBorder(null);
+        UpdatesBtn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddFriendsBtnActionPerformed(evt);
+                UpdatesBtn2ActionPerformed(evt);
             }
         });
 
@@ -284,7 +284,7 @@ public class MainPage extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(AddFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdatesBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -296,12 +296,12 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(AddFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(UpdatesBtn2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)))
         );
 
-        jPanel8.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel8.setPreferredSize(new java.awt.Dimension(374, 55));
+        UpdatesBtn3.setBackground(new java.awt.Color(0, 102, 102));
+        UpdatesBtn3.setPreferredSize(new java.awt.Dimension(374, 55));
 
         jTextField7.setBackground(new java.awt.Color(0, 102, 102));
         jTextField7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -313,24 +313,24 @@ public class MainPage extends javax.swing.JFrame {
         CheckFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
         CheckFriendsBtn.setBorder(null);
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout UpdatesBtn3Layout = new javax.swing.GroupLayout(UpdatesBtn3);
+        UpdatesBtn3.setLayout(UpdatesBtn3Layout);
+        UpdatesBtn3Layout.setHorizontalGroup(
+            UpdatesBtn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(UpdatesBtn3Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+        UpdatesBtn3Layout.setVerticalGroup(
+            UpdatesBtn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UpdatesBtn3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(UpdatesBtn3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField7)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGroup(UpdatesBtn3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -397,7 +397,7 @@ public class MainPage extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+            .addComponent(UpdatesBtn3, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
@@ -422,7 +422,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UpdatesBtn3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66))
         );
 
@@ -439,11 +439,11 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Welcome");
 
-        LogoutBtn.setBackground(new java.awt.Color(0, 102, 102));
-        LogoutBtn.setBorder(null);
-        LogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setBackground(new java.awt.Color(0, 102, 102));
+        jButton8.setBorder(null);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutBtnActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -462,7 +462,7 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addComponent(messageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
-                        .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(70, 70, 70))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -477,7 +477,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -564,11 +564,11 @@ public class MainPage extends javax.swing.JFrame {
      /**
     * Logout from application button
     */
-    private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         this.dispose();
         LoginForm.main(new String[]{});
-    }//GEN-LAST:event_LogoutBtnActionPerformed
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -595,19 +595,19 @@ public class MainPage extends javax.swing.JFrame {
     /**
     * Button to access add friends form.
     */
-    private void AddFriendsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendsBtnActionPerformed
+    private void UpdatesBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtn2ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         AddFriendForm.main(new String[]{});
-    }//GEN-LAST:event_AddFriendsBtnActionPerformed
+    }//GEN-LAST:event_UpdatesBtn2ActionPerformed
 
     /**
     * Button to access attendees form.
     */
-    private void CheckAttendeesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckAttendeesBtnActionPerformed
+    private void UpdatesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtnActionPerformed
         // TODO add your handling code here:
         CheckRecentUpdates.main(new String[]{});
-    }//GEN-LAST:event_CheckAttendeesBtnActionPerformed
+    }//GEN-LAST:event_UpdatesBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -673,16 +673,17 @@ public class MainPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddFriendsBtn;
-    private javax.swing.JButton CheckAttendeesBtn;
     private javax.swing.JButton CheckFriendsBtn;
     private javax.swing.JTable CourseInfoTable;
     private javax.swing.JButton DropCourseBtn;
     private javax.swing.JButton EnrollCourseBtn;
     private javax.swing.JTextField IDfield;
-    private javax.swing.JButton LogoutBtn;
     private javax.swing.JButton MyProfileBtn;
+    private javax.swing.JButton UpdatesBtn;
     private javax.swing.JButton UpdatesBtn1;
+    private javax.swing.JButton UpdatesBtn2;
+    private javax.swing.JPanel UpdatesBtn3;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -694,7 +695,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
