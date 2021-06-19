@@ -64,7 +64,7 @@
               <Component id="jPanel5" alignment="2" pref="373" max="32767" attributes="0"/>
               <Component id="jPanel6" alignment="0" pref="373" max="32767" attributes="0"/>
               <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
-              <Component id="UpdatesBtn3" alignment="0" pref="373" max="32767" attributes="0"/>
+              <Component id="jPanel8" alignment="0" pref="373" max="32767" attributes="0"/>
               <Component id="jPanel7" alignment="0" pref="373" max="32767" attributes="0"/>
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
@@ -91,7 +91,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" pref="44" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="UpdatesBtn3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -442,7 +442,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="UpdatesBtn3">
+        <Container class="javax.swing.JPanel" name="jPanel8">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="66" green="66" red="0" type="rgb"/>
@@ -624,12 +624,17 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="messageTxt" min="-2" pref="142" max="-2" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
                           <EmptySpace pref="500" max="32767" attributes="0"/>
                           <Component id="jButton8" min="-2" pref="34" max="-2" attributes="0"/>
 =======
                           <EmptySpace pref="490" max="32767" attributes="0"/>
                           <Component id="LogoutBtn" min="-2" pref="34" max="-2" attributes="0"/>
 >>>>>>> 3caec8a883efc4668174c00b2f36c66e8bf8a8b7
+=======
+                          <EmptySpace pref="490" max="32767" attributes="0"/>
+                          <Component id="LogoutBtn" min="-2" pref="34" max="-2" attributes="0"/>
+>>>>>>> parent of 548be99 (refactor)
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
                   </Group>
