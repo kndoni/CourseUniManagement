@@ -18,8 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import PresentationLayer.DB;
-import java.awt.Font;
-import java.awt.Color;
+
 
 /**
  *
@@ -37,10 +36,9 @@ public class MainPage extends javax.swing.JFrame {
      * Creates new form MainPage, here we display all the courses existing
      * in the database into a table to the form.
      */
-    public MainPage() throws SQLException { 
+    public MainPage() throws SQLException {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH); 
         IDfield.setText(PersonID);
         DefaultTableModel model;
         model = (DefaultTableModel) CourseInfoTable.getModel();
@@ -66,7 +64,6 @@ public class MainPage extends javax.swing.JFrame {
            Con.close();
         }catch(Exception e){System.out.println(e);
     }
-          
     }
 
     /**
@@ -96,10 +93,14 @@ public class MainPage extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         AddFriendsBtn = new javax.swing.JButton();
 <<<<<<< HEAD
+<<<<<<< HEAD
         UpdatesBtn3 = new javax.swing.JPanel();
 =======
         jPanel8 = new javax.swing.JPanel();
 >>>>>>> parent of 548be99 (refactor)
+=======
+        jPanel = new javax.swing.JPanel();
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
         jTextField7 = new javax.swing.JTextField();
         CheckFriendsBtn = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
@@ -109,7 +110,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        LogoutBtn = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         CourseInfoTable = new javax.swing.JTable();
@@ -167,11 +168,6 @@ public class MainPage extends javax.swing.JFrame {
 
         UpdatesBtn1.setBackground(new java.awt.Color(0, 102, 102));
         UpdatesBtn1.setBorder(null);
-        UpdatesBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdatesBtn1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -312,8 +308,13 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)))
         );
 
+<<<<<<< HEAD
         jPanel8.setBackground(new java.awt.Color(0, 102, 102));
         jPanel8.setPreferredSize(new java.awt.Dimension(374, 55));
+=======
+        jPanel.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel.setPreferredSize(new java.awt.Dimension(374, 55));
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
 
         jTextField7.setBackground(new java.awt.Color(0, 102, 102));
         jTextField7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -325,17 +326,26 @@ public class MainPage extends javax.swing.JFrame {
         CheckFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
         CheckFriendsBtn.setBorder(null);
 
+<<<<<<< HEAD
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
+=======
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLayout.createSequentialGroup()
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                 .addGap(30, 30, 30)
                 .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+<<<<<<< HEAD
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
@@ -343,6 +353,15 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField7)
                     .addGroup(jPanel8Layout.createSequentialGroup()
+=======
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextField7)
+                    .addGroup(jPanelLayout.createSequentialGroup()
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -409,7 +428,11 @@ public class MainPage extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+<<<<<<< HEAD
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+=======
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
@@ -434,7 +457,11 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+<<<<<<< HEAD
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+=======
+                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                 .addGap(66, 66, 66))
         );
 
@@ -451,11 +478,11 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Welcome");
 
-        LogoutBtn.setBackground(new java.awt.Color(0, 102, 102));
-        LogoutBtn.setBorder(null);
-        LogoutBtn.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setBackground(new java.awt.Color(0, 102, 102));
+        jButton8.setBorder(null);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LogoutBtnActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
 
@@ -475,6 +502,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(messageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 500, Short.MAX_VALUE)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
 =======
@@ -485,6 +513,10 @@ public class MainPage extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
                         .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
 >>>>>>> parent of 548be99 (refactor)
+=======
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
+                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                         .addGap(70, 70, 70))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -499,7 +531,7 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel11Layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -528,10 +560,6 @@ public class MainPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        CourseInfoTable.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        CourseInfoTable.setRowHeight(25);
-        CourseInfoTable.setShowVerticalLines(false);
-        CourseInfoTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(CourseInfoTable);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -540,7 +568,7 @@ public class MainPage extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 827, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -557,16 +585,19 @@ public class MainPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(34, 34, 34)
                 .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(39, 39, 39))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -587,11 +618,11 @@ public class MainPage extends javax.swing.JFrame {
      /**
     * Logout from application button
     */
-    private void LogoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutBtnActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         this.dispose();
         LoginForm.main(new String[]{});
-    }//GEN-LAST:event_LogoutBtnActionPerformed
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -633,6 +664,7 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckAttendeesBtnActionPerformed
 <<<<<<< HEAD
 
+<<<<<<< HEAD
     private void UpdatesBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtn1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -641,6 +673,8 @@ public class MainPage extends javax.swing.JFrame {
 =======
 >>>>>>> parent of 548be99 (refactor)
 
+=======
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
     /**
      * @param args the command line arguments
      */
@@ -712,16 +746,20 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton DropCourseBtn;
     private javax.swing.JButton EnrollCourseBtn;
     private javax.swing.JTextField IDfield;
-    private javax.swing.JButton LogoutBtn;
     private javax.swing.JButton MyProfileBtn;
     private javax.swing.JButton UpdatesBtn1;
+<<<<<<< HEAD
 <<<<<<< HEAD
     private javax.swing.JPanel UpdatesBtn3;
 =======
 >>>>>>> parent of 548be99 (refactor)
+=======
+    private javax.swing.JButton jButton8;
+>>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
