@@ -92,15 +92,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
         AddFriendsBtn = new javax.swing.JButton();
-<<<<<<< HEAD
-<<<<<<< HEAD
-        UpdatesBtn3 = new javax.swing.JPanel();
-=======
-        jPanel8 = new javax.swing.JPanel();
->>>>>>> parent of 548be99 (refactor)
-=======
         jPanel = new javax.swing.JPanel();
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
         jTextField7 = new javax.swing.JTextField();
         CheckFriendsBtn = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
@@ -308,13 +300,8 @@ public class MainPage extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)))
         );
 
-<<<<<<< HEAD
-        jPanel8.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel8.setPreferredSize(new java.awt.Dimension(374, 55));
-=======
         jPanel.setBackground(new java.awt.Color(0, 102, 102));
         jPanel.setPreferredSize(new java.awt.Dimension(374, 55));
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
 
         jTextField7.setBackground(new java.awt.Color(0, 102, 102));
         jTextField7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -326,34 +313,17 @@ public class MainPage extends javax.swing.JFrame {
         CheckFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
         CheckFriendsBtn.setBorder(null);
 
-<<<<<<< HEAD
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-=======
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
         jPanelLayout.setHorizontalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                 .addGap(30, 30, 30)
                 .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-<<<<<<< HEAD
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField7)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-=======
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
@@ -361,7 +331,6 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField7)
                     .addGroup(jPanelLayout.createSequentialGroup()
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(CheckFriendsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -428,11 +397,7 @@ public class MainPage extends javax.swing.JFrame {
             .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-<<<<<<< HEAD
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-=======
             .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
@@ -457,11 +422,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-<<<<<<< HEAD
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
                 .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                 .addGap(66, 66, 66))
         );
 
@@ -500,23 +461,8 @@ public class MainPage extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                         .addComponent(messageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 500, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-=======
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
-                        .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 3caec8a883efc4668174c00b2f36c66e8bf8a8b7
-=======
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
-                        .addComponent(LogoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> parent of 548be99 (refactor)
-=======
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
                         .addGap(70, 70, 70))))
         );
         jPanel11Layout.setVerticalGroup(
@@ -662,19 +608,7 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         CheckRecentUpdates.main(new String[]{});
     }//GEN-LAST:event_CheckAttendeesBtnActionPerformed
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-    private void UpdatesBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdatesBtn1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        Comments.main(new String[]{});
-    }//GEN-LAST:event_UpdatesBtn1ActionPerformed
-=======
->>>>>>> parent of 548be99 (refactor)
-
-=======
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
     /**
      * @param args the command line arguments
      */
@@ -748,14 +682,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField IDfield;
     private javax.swing.JButton MyProfileBtn;
     private javax.swing.JButton UpdatesBtn1;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private javax.swing.JPanel UpdatesBtn3;
-=======
->>>>>>> parent of 548be99 (refactor)
-=======
     private javax.swing.JButton jButton8;
->>>>>>> 1424b8691414f6d8283612aa685a56cd57de2fb1
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -768,7 +695,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
