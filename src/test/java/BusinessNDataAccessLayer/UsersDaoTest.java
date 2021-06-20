@@ -8,14 +8,14 @@ package BusinessNDataAccessLayer;
 import PresentationLayer.SignUpFrame;
 import com.mysql.jdbc.PreparedStatement;
 import java.sql.SQLException;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.jupiter.api.AfterAll;
 
 /**
  *
- * @author ndoni, tahiraj, muco
+ * @author user
  */
 public class UsersDaoTest {
     
@@ -79,5 +79,4 @@ public class UsersDaoTest {
     public void closeConnection() {
 	usersDao.close();
     }
-    
 }

@@ -5,6 +5,8 @@
  */
 package BusinessNDataAccessLayer;
 
+import PresentationLayer.AddFriendForm;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -14,14 +16,14 @@ import static org.junit.Assert.*;
  */
 public class FriendsDaoTest {
     
-    public FriendsDaoTest() {
-    }
-
-    /**
-     * Test of FriendValidate method, of class FriendsDao.
-     */
-    @Test
+  @Test
     public void testFriendValidate() {
+        AddFriendForm addFriendForm1 = new AddFriendForm();
+        boolean value1 = addFriendForm1.validateFriend("2");
+        
+        boolean result1 = FriendsDao.UserValidate("2");
+        
+        Assert.assertEquals(value1,result1);
     }
 
     /**
@@ -29,6 +31,12 @@ public class FriendsDaoTest {
      */
     @Test
     public void testUserValidate() {
+        AddFriendForm addFriendForm1 = new AddFriendForm();
+        boolean value1 = addFriendForm1.validateUser("2");
+        
+        boolean result1 = FriendsDao.UserValidate("2");
+        
+        Assert.assertEquals(value1,result1);
     }
 
     /**
@@ -36,6 +44,19 @@ public class FriendsDaoTest {
      */
     @Test
     public void testAddFriend() {
+        FriendsDao friendsDao = new FriendsDao();
+        AddFriendForm addFriendForm1 = new AddFriendForm();
+        int value1 = addFriendForm1.addNewFriend(1,"1");
+        
+        int validate= 0;
+        
+        boolean result1 = FriendsDao.UserValidate("1");
+        
+        if(result1 == true)
+            validate =0;
+ 
+         Assert.assertEquals(value1, validate);
+
     }
 
     /**
@@ -43,6 +64,9 @@ public class FriendsDaoTest {
      */
     @Test
     public void testCheck() {
+        FriendsDao friendsDao = new FriendsDao();
+        int check1 = FriendsDao.Check("1");
+        
+        Assert.assertEquals(1,check1);
     }
-    
 }
