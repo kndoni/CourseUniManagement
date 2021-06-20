@@ -24,6 +24,8 @@ import static PresentationLayer.MainPage.PersonID;
  */
 public class AddFriendForm extends javax.swing.JFrame {
 
+    int friendshipIDV;
+    String UserIDV;
     /**
      * Creates new form AddFriendForm, by initializing the constructor.
      * Prints all the values of friends table into a table component, to display them to form.
@@ -302,17 +304,19 @@ public class AddFriendForm extends javax.swing.JFrame {
     */
     private void AddFriendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFriendBtnActionPerformed
         // TODO add your handling code here:
-        int friendshipIDV;
+        
         friendshipIDV = Integer.parseInt(friendIDField.getText());
-        String UserIDV = PersonID;
+        UserIDV = PersonID;
 
-        if (FriendsDao.FriendValidate(friendIDField.getText()) && FriendsDao.UserValidate(UserIDField.getText())) {
+        String friendId = friendIDField.getText();
+        String userId = UserIDField.getText();
+        if (validateFriend(friendId) && validateUser(userId)) {
             if (friendIDField.getText().equals(UserIDField.getText())) {
                 JOptionPane.showMessageDialog(AddFriendForm.this, "You cant add yourself as friend", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
             } else if (FriendsDao.Check(UserIDV) == 0) {
                 JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend to list", "Friendship error!", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (FriendsDao.addFriend(friendshipIDV, UserIDV) != 0) {
+                if (addNewFriend(friendshipIDV, UserIDV) != 0) {
 
                     JOptionPane.showMessageDialog(AddFriendForm.this, "Friend added!", "Check your friend's list in profile", JOptionPane.ERROR_MESSAGE);
                     friendIDField.setText("");
@@ -323,9 +327,9 @@ public class AddFriendForm extends javax.swing.JFrame {
             }
 
         } else {
-            if (FriendsDao.UserValidate(UserIDField.getText())) {
+            if (validateUser(userId)) {
                 JOptionPane.showMessageDialog(AddFriendForm.this, "This friend doesn't exist!", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
-            } else if (FriendsDao.FriendValidate(friendIDField.getText())) {
+            } else if (validateFriend(friendId)) {
                 JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend!", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(AddFriendForm.this, "Unable to add friend", "Friendship Error!", JOptionPane.ERROR_MESSAGE);
@@ -374,6 +378,18 @@ public class AddFriendForm extends javax.swing.JFrame {
                 new AddFriendForm().setVisible(true);
             }
         });
+    }
+    
+    public int addNewFriend(int friendID, String userID){
+        return FriendsDao.addFriend(friendID, userID);
+    }
+    
+    public boolean validateFriend(String friendID){
+        return FriendsDao.FriendValidate(friendID);
+    }
+    
+    public boolean validateUser(String userID){
+        return FriendsDao.UserValidate(userID);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

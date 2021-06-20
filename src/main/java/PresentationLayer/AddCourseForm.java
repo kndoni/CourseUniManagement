@@ -13,7 +13,7 @@ import BusinessNDataAccessLayer.CoursesDao;
 import static PresentationLayer.MainPage.PersonID;
 import static PresentationLayer.MainPage.Major;
 import java.awt.HeadlessException;
-import PresentationLayer.MyCoursesListForm;
+import static PresentationLayer.MyCoursesListForm.MyCourseListTable;
 
 /**
  *
@@ -534,30 +534,38 @@ public class AddCourseForm extends javax.swing.JFrame {
         userId = UserID.getText();
         courseId = CourseIDField.getText();
 
-        if (validateCourse(userId) && validateUser(userId)) {
-            if (CoursesDao.Check(UserIDV) == 0) {
-                JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses", "Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
-            } else {
-                if (enrollCourse(CourseIDV, UserIDV, IFDate, RFDate) != 0) {
+         if(CoursesDao.CourseValidate(CourseIDField.getText()) && CoursesDao.UserValidate(UserID.getText()))
+        {
+            if(CoursesDao.Check(UserIDV)==0)
+            JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            else
+            {
+                if(CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
+                {
+                    System.out.println("Statusi i enrolling courses tek addcoruseform: "+ CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate));
 
-                    JOptionPane.showMessageDialog(AddCourseForm.this, "The course enrolled!", "Check your course list in profile", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(AddCourseForm.this, "The course enrolled!","Check your course list in profile", JOptionPane.ERROR_MESSAGE);
                     CourseIDField.setText("");
-                    // UserID.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(AddCourseForm.this, "Unable to enroll course", "Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+                   // UserID.setText("");
                 }
-            }
-        } else {
-            if (validateUser(userId)) {
-                System.out.println("User ID:" + UserID.getText());
-                JOptionPane.showMessageDialog(AddCourseForm.this, "Please choose a course of your major", "Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
-                CourseIDField.setText("");
-            } else if (validateCourse(courseId)) {
-                JOptionPane.showMessageDialog(AddCourseForm.this, "This course doesn't exist", "Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(AddCourseForm.this, "The course and user doesn't exist!", "Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+               
+                else 
+                JOptionPane.showMessageDialog(AddCourseForm.this, "Unable to enroll course","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
             }
 
+        }
+        
+        else
+        {    if(CoursesDao.UserValidate(UserID.getText())){
+            System.out.println("Vlera e user validate: "+ CoursesDao.UserValidate(UserID.getText()) );
+            JOptionPane.showMessageDialog(AddCourseForm.this, "Please choose a course of your major","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+           CourseIDField.setText("");}
+           else
+            if(CoursesDao.CourseValidate(CourseIDField.getText()))
+            JOptionPane.showMessageDialog(AddCourseForm.this, "This course doesn't exist","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            else
+            JOptionPane.showMessageDialog(AddCourseForm.this, "The course and user doesn't exist!","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_AddCourseBtnActionPerformed
 
@@ -600,6 +608,8 @@ public class AddCourseForm extends javax.swing.JFrame {
     * This method is called to validate the course from courses dao.
     */
     public boolean validateCourse(String courseID) {
+        
+        System.out.println("Vlera e kthyer nga course validate " + CoursesDao.CourseValidate(courseID));
         return CoursesDao.CourseValidate(courseID);
     }
 
@@ -608,6 +618,7 @@ public class AddCourseForm extends javax.swing.JFrame {
     * user class of the coursesDao class.
     */
     public boolean validateUser(String userID) {
+        System.out.println("Vlera e kthyer nga user validate : "+ CoursesDao.UserValidate(userID));
         return CoursesDao.UserValidate(userID);
     }
 

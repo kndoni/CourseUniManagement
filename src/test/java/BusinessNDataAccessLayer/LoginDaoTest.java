@@ -6,17 +6,18 @@
 package BusinessNDataAccessLayer;
 
 import PresentationLayer.LoginForm;
+import PresentationLayer.UserLogin;
 import org.junit.Assert;
 import org.junit.Test;
-
+import static org.junit.Assert.*;
 
 /**
  *
- * @author kristi , andrea, islam
+ * @author user
  */
 public class LoginDaoTest {
     
-    public static LoginDao loginDao = new LoginDao();
+   public static LoginDao loginDao = new LoginDao();
    
     /**
      * Test of validate method, of class LoginDao. Execution of two cases false and true.
@@ -35,5 +36,10 @@ public class LoginDaoTest {
         boolean status2 = loginForm2.LoginUser("kristi", "kristi123");
         boolean result2 = true;
         Assert.assertEquals(result2,status2);
+        
+        UserLogin userLogin = new UserLogin();
+        boolean resultUserLogin=userLogin.validateUser("kristi123");
+        
+        Assert.assertEquals(result2, resultUserLogin);
     }
 }

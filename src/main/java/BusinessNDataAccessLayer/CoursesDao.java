@@ -16,15 +16,14 @@ import java.util.List;
 public class CoursesDao {
 
     /**
-    * Here is set the major of the logged in user,
-    * it is used in the methods of this class.
-    */
-    public static String major = MainPage.Major; 
-    
+     * Here is set the major of the logged in user, it is used in the methods of
+     * this class.
+     */
+    public static String major = MainPage.Major;
+
     /**
-    * This class is used to check if a specific course
-    * exists in the database.
-    */
+     * This class is used to check if a specific course exists in the database.
+     */
     public static boolean checkBook(String courselno) {
         boolean status = false;
         try {
@@ -41,9 +40,9 @@ public class CoursesDao {
     }
 
     /**
-    * All method returns all the courses from the databases
-    * and saves them into an array list
-    */
+     * All method returns all the courses from the databases and saves them into
+     * an array list
+     */
     public List<Courses> all() {
 
         List<Courses> allCourses = new ArrayList<Courses>();
@@ -71,11 +70,11 @@ public class CoursesDao {
         return allCourses;
 
     }
-    
+
     /**
-    * Enrolled courses returns a type list of courses
-    * that are already enrolled by users.
-    */
+     * Enrolled courses returns a type list of courses that are already enrolled
+     * by users.
+     */
     public List<EnrolledCourses> enrolledCourses() {
 
         List<EnrolledCourses> enrollCourses = new ArrayList<EnrolledCourses>();
@@ -90,7 +89,7 @@ public class CoursesDao {
                 int courseID = rs.getInt("CourseID");
                 String userID = rs.getString("UserID");
                 String issueDate = rs.getString("IssueDate");
-                String returnDate = rs.getString("ReturnDate");    
+                String returnDate = rs.getString("ReturnDate");
                 enrollCourses.add(new EnrolledCourses(courseID, userID, issueDate, returnDate));
             }
 
@@ -102,9 +101,9 @@ public class CoursesDao {
     }
 
     /**
-    * Save method is being used to save a new course into the database
-    * it is being used mostly for testing purposes.
-    */
+     * Save method is being used to save a new course into the database it is
+     * being used mostly for testing purposes.
+     */
     public void save(Courses course) {
         try {
             Connection con = DB.getConnection();
@@ -125,41 +124,35 @@ public class CoursesDao {
     }
 
     /**
-    * Course validate returns a true or false, it practically 
-    * confirms if the course id the users is trying to enroll
-    * is in alignment with the major of the logged in user.
-    */
+     * Course validate returns a true or false, it practically confirms if the
+     * course id the users is trying to enroll is in alignment with the major of
+     * the logged in user.
+     */
     public static boolean CourseValidate(String CourseID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            System.out.println("ID qe vjen: " + CourseID);
-            System.out.println("Major e perdoruesit: " + major);
             PreparedStatement ps = con.prepareStatement("select * from courses where CourseID = ? and Major='" + MainPage.Major + "'");
             ps.setString(1, CourseID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
-            System.out.println("Gjendja statusit course validate: " + status);
             con.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        System.out.println("Gjendja statusit: " + status);
         return status;
     }
 
     /**
-     * This class is used to check if the user that is trying
-     * to enroll or drop a course is existing in the database.
-    */
+     * This class is used to check if the user that is trying to enroll or drop
+     * a course is existing in the database.
+     */
     public static boolean UserValidate(String LoginID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            System.out.println("ID qe vjen: " + LoginID);
             PreparedStatement ps = con.prepareStatement("select * from login where LoginID = ?");
             ps.setString(1, LoginID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
-            System.out.println("Gjendja statusit: " + status);
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -168,9 +161,9 @@ public class CoursesDao {
     }
 
     /**
-    * Enrolling course to store the course which the user is
-    * enrolling. Saves the course data to database.
-    */
+     * Enrolling course to store the course which the user is enrolling. Saves
+     * the course data to database.
+     */
     public static int EnrollingCourse(int CourseID, String LoginID, String IDate, String RDate) {
         int status = 0;
         try {
@@ -189,12 +182,12 @@ public class CoursesDao {
         }
         return status;
     }
-    
-    
+
     /**
-    * This class is used to get all courses from the database and order them by id
-    * it saves the records to a list. This class is used mostly for testing purposes.
-    */
+     * This class is used to get all courses from the database and order them by
+     * id it saves the records to a list. This class is used mostly for testing
+     * purposes.
+     */
     public List<Courses> getOrderedCourses() {
         List<Courses> allCourses = new ArrayList<Courses>();
         try {
@@ -204,7 +197,7 @@ public class CoursesDao {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int courseId= rs.getInt("CourseID");
+                int courseId = rs.getInt("CourseID");
                 String courseName = rs.getString("CourseName");
                 String program = rs.getString("Program");
                 String instructor = rs.getString("Instructor");
@@ -212,7 +205,7 @@ public class CoursesDao {
                 String schedule = rs.getString("Schedule");
                 String location = rs.getString("Location");
 
-                allCourses.add(new Courses(courseId,courseName, program, instructor, major, schedule, location));
+                allCourses.add(new Courses(courseId, courseName, program, instructor, major, schedule, location));
             }
 
         } catch (SQLException e) {
@@ -222,9 +215,9 @@ public class CoursesDao {
     }
 
     /**
-    * Dropping course takes two parameters the user id and course id.
-    * This class removes a course from enrolled courses list of the loged in user.
-    */
+     * Dropping course takes two parameters the user id and course id. This
+     * class removes a course from enrolled courses list of the loged in user.
+     */
     public static int DropingCourse(int CourseID, String LoginID) {
         int status = 0;
         try {
@@ -242,9 +235,9 @@ public class CoursesDao {
     }
 
     /**
-    * This method is used to display the courses of which the user
-    * has already enrolled.
-    */
+     * This method is used to display the courses of which the user has already
+     * enrolled.
+     */
     public static boolean CheckEnrollCourses(int CourseID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
@@ -260,24 +253,22 @@ public class CoursesDao {
     }
 
     /**
-    * This method is used to check in how many courses
-    * has the user logged in, and if he has exceeded 
-    * the limit.
-    */
+     * This method is used to check in how many courses has the user logged in,
+     * and if he has exceeded the limit.
+     */
     public static int Check(String LoginID) {
         boolean status = false;
         int num = 0;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from course_count where UserID=?");
+            PreparedStatement ps = con.prepareStatement("select * from course_count UserID=?");
             ps.setString(2, LoginID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
-            num = rs.getInt("CourseNo"); 
+            num = rs.getInt("CourseNo");
             con.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-         System.out.println("Vlera numrit  "+ num);
         if (num == 5) {
             return 0;
         } else {
@@ -286,8 +277,8 @@ public class CoursesDao {
     }
 
     /**
-    * This method is used to return the database connection.
-    */
+     * This method is used to return the database connection.
+     */
     public static Connection getC() {
         Connection con = DB.getConnection();
         return con;

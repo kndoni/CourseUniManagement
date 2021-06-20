@@ -16,6 +16,7 @@ import static PresentationLayer.MainPage.PersonID;
  */
 public class UserLogin extends javax.swing.JFrame {
 
+    String Pass;
     /**
      * Creates new form UserLogin
      */
@@ -202,9 +203,9 @@ public class UserLogin extends javax.swing.JFrame {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
          String User=PersonID;
-        String Pass = String.valueOf(password.getPassword());
-        UsersDao.validate( Pass);
-         if(UsersDao.validate(Pass))
+         Pass = String.valueOf(password.getPassword());
+        validateUser(Pass);
+         if(validateUser(Pass))
         {
            this.dispose();
            UserLoginSuccess.main(new String[]{Pass});
@@ -257,6 +258,9 @@ public class UserLogin extends javax.swing.JFrame {
         });
     }
 
+    public boolean validateUser(String password){
+        return UsersDao.validate(password);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GoBack;
     private javax.swing.JButton LoginBtn;
