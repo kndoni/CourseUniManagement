@@ -12,7 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel; 
 /**
  *
  * @author User
@@ -25,6 +26,8 @@ public class Comments extends javax.swing.JFrame {
     public Comments() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH); 
+         
+        FillCourses();
         
         jTable1.getTableHeader().setFont(new Font("Segoe UI",Font.BOLD,12));
         jTable1.getTableHeader().setOpaque(false);
@@ -32,30 +35,8 @@ public class Comments extends javax.swing.JFrame {
         jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.setRowHeight(40);
         
-        DefaultTableModel model;
-        model = (DefaultTableModel) jTable1.getModel();
-
-        try(Connection Con = DB.getConnection()) {
-            PreparedStatement ps=Con.prepareStatement("select * from comments",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-            ResultSet rs= ps.executeQuery();
-            
-           ResultSetMetaData rsmd = rs.getMetaData();
-  
-            int colnum=rsmd.getColumnCount();
-   
-      
-            String Row[];
-            Row = new String[colnum];
-            while(rs.next()){
-                for(int i=1;i<=colnum;i++){
-                    Row[i-1]=rs.getString(i);
-                    }
-                 model.addRow(Row);
-            }
-   
-           Con.close();
-        }catch(Exception e){System.out.println(e);
-    }
+        UpdateTable();
+         
     }
 
     /**
@@ -150,7 +131,6 @@ public class Comments extends javax.swing.JFrame {
         jLabel3.setText("Course");
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
@@ -160,6 +140,11 @@ public class Comments extends javax.swing.JFrame {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Desktop\\CourseUniManagement\\src\\main\\java\\images\\comment.png")); // NOI18N
         jButton1.setText("Add Comment ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,28 +154,25 @@ public class Comments extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jComboBox1, 0, 300, Short.MAX_VALUE)
-                                        .addComponent(jTextField1))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(140, 140, 140)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(23, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jComboBox1, 0, 300, Short.MAX_VALUE)
+                                .addComponent(jTextField1))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(138, 138, 138)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +221,73 @@ public class Comments extends javax.swing.JFrame {
         this.setVisible(false);
         MainPage.ThisLogined.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
+    private void UpdateTable()
+    {
+        
+        DefaultTableModel model;
+        model = (DefaultTableModel) jTable1.getModel(); 
+         try(Connection Con = DB.getConnection()) {
+            PreparedStatement ps=Con.prepareStatement("select * from comments",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            ResultSet rs= ps.executeQuery();
+            
+           ResultSetMetaData rsmd = rs.getMetaData();
+  
+            int colnum=rsmd.getColumnCount();
+   
+      
+            String Row[];
+            Row = new String[colnum];
+            while(rs.next()){
+                for(int i=1;i<=colnum;i++){
+                    Row[i-1]=rs.getString(i);
+                    }
+                 model.addRow(Row);
+            }
+   
+           Con.close();
+        }catch(Exception e){System.out.println(e);
+    }
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         
+         try(Connection Con = DB.getConnection()){
+            String sql="insert into comments(PersonName,Course,CommentText) value(?,?,?)";
+            PreparedStatement ps = Con.prepareStatement(sql);
+            ps.setString(1, jTextField1.getText());
+            String course = String.valueOf(jComboBox1.getSelectedItem());
+            ps.setString(2, course);
+            ps.setString(3, jTextPane1.getText());
+            
+            ps.execute(); 
+            JOptionPane.showMessageDialog(null,"Comment added!");
+        }
+        catch(Exception e)
+        { System.out.println(e); 
+             }
+          this.setVisible(false);
+        MainPage.ThisLogined.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void FillCourses()
+    {
+        try(Connection Con = DB.getConnection()){
+            String sql="select * from Courses";
+            PreparedStatement ps = Con.prepareStatement(sql);
+            ResultSet rs= ps.executeQuery();
+            
+            while(rs.next())
+            {
+                String name = rs.getString("CourseName");
+                jComboBox1.addItem(name);
+            }
+        }
+        catch(Exception e)
+        {
+         System.out.println(e);     
+    }
+        
+    }
     /**
      * @param args the command line arguments
      */
