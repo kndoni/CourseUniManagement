@@ -238,11 +238,12 @@ public class CoursesDao {
      * This method is used to display the courses of which the user has already
      * enrolled.
      */
-    public static boolean CheckEnrollCourses(int CourseID) {
+    public static boolean CheckEnrollCourses(int CourseID, String LoginID) {
         boolean status = false;
         try (Connection con = DB.getConnection()) {
-            PreparedStatement ps = con.prepareStatement("select * from enrollcourses where CourseID=?");
+            PreparedStatement ps = con.prepareStatement("select * from enrollcourses where CourseID=? and UserID=?");
             ps.setInt(1, CourseID);
+             ps.setString(2, LoginID);
             ResultSet rs = ps.executeQuery();
             status = rs.next();
             con.close();

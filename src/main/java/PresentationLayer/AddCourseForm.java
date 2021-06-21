@@ -14,6 +14,7 @@ import static PresentationLayer.MainPage.PersonID;
 import static PresentationLayer.MainPage.Major;
 import java.awt.HeadlessException;
 import static PresentationLayer.MyCoursesListForm.MyCourseListTable;
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,16 +31,14 @@ public class AddCourseForm extends javax.swing.JFrame {
     String RFDate;
     String courseId;
     String userId;
-
-    int CourseIDV;
-    String UserIDV;
+ 
 
     /**
      * Creates new form AddCourseForm, initializes the constructor without any parameters.
      */
     public AddCourseForm() {
         initComponents();
-
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         UserID.setText(PersonID); //setting the ID automatically in textfield
         //using calendar to display the data format in fields
         int year;
@@ -524,6 +523,8 @@ public class AddCourseForm extends javax.swing.JFrame {
     */
     private void AddCourseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCourseBtnActionPerformed
         // TODO add your handling code here:
+        int CourseIDV;
+        String UserIDV;
         CourseIDV = Integer.parseInt(CourseIDField.getText());
         UserIDV = PersonID; //set the userID field to PersonID, which is genereated automatically from login
 
@@ -540,7 +541,7 @@ public class AddCourseForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(AddCourseForm.this, "You have reached the max number of courses","Enroll Course Error!", JOptionPane.ERROR_MESSAGE);
             else
             {
-                if(CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate)!=0)
+                if((!CoursesDao.CheckEnrollCourses(CourseIDV,UserIDV)))
                 {
                     System.out.println("Statusi i enrolling courses tek addcoruseform: "+ CoursesDao.EnrollingCourse(CourseIDV, UserIDV, IFDate, RFDate));
 
