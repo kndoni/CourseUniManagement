@@ -366,7 +366,7 @@ public class DropCourseForm extends javax.swing.JFrame {
 
         if(CoursesDao.CourseValidate(CourseIdField.getText()) && CoursesDao.UserValidate(UserIDfield.getText()))
         {
-               if(checkEnrollCourse(CourseIDV))
+               if(checkEnrollCourse(CourseIDV,UserIDV))
                {
                    
                    if(dropCourse(CourseIDV, UserIDV)!=0)
@@ -436,8 +436,8 @@ public class DropCourseForm extends javax.swing.JFrame {
         return CoursesDao.DropingCourse(courseId, userId);
     }
     
-    public boolean checkEnrollCourse(int courseId){
-        return CoursesDao.CheckEnrollCourses(courseId);
+    public boolean checkEnrollCourse(int courseId, String userId){
+        return CoursesDao.CheckEnrollCourses(courseId,userId);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
