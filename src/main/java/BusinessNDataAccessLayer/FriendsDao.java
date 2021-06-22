@@ -56,14 +56,16 @@ public class FriendsDao {
     * This class is used to add a new friend to friends table,
     * it serves as a connection between friends and users table.
     */
-    public static int addFriend(int frID, String UserID) {
+    public static int addFriend(int frID,int UId,String FName) {
         int status = 0;
         try {
 
             Connection con = DB.getConnection();
-            PreparedStatement ps = con.prepareStatement("insert into friends values(?,?)");
-            ps.setString(1, UserID);
-            ps.setInt(2, frID);
+            PreparedStatement ps = con.prepareStatement("insert into f_list values(?,?,?)");
+            ps.setInt(1, frID);
+            ps.setInt(2, UId);
+            ps.setString(3, FName);
+             
 
             status = ps.executeUpdate();
             con.close();
@@ -72,7 +74,20 @@ public class FriendsDao {
         }
         return status;
     }
-
+public static boolean CheckFriends(int frID,int UId) {
+        boolean status = false;
+        try (Connection con = DB.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("select * from f_list where f_id = ? and u_id = ?");
+            ps.setInt(1, frID);
+             ps.setInt(2, UId); 
+            ResultSet rs = ps.executeQuery();
+            status = rs.next();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return status;
+    }
     public static int Check(String UserID) {
         boolean status = false;
         int num = 0;
