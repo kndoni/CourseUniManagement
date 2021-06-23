@@ -20,10 +20,11 @@ public class FriendsDaoTest {
     public void testFriendValidate() {
         AddFriendForm addFriendForm1 = new AddFriendForm();
         boolean value1 = addFriendForm1.validateFriend("3");
+        Assert.assertEquals(false,value1);
         
         boolean result1 = FriendsDao.UserValidate("2");
         
-        Assert.assertEquals(value1,result1);
+        Assert.assertEquals(true,result1);
     }
 
     /**
@@ -33,10 +34,11 @@ public class FriendsDaoTest {
     public void testUserValidate() {
         AddFriendForm addFriendForm1 = new AddFriendForm();
         boolean value1 = addFriendForm1.validateUser("2");
+        Assert.assertEquals(true,value1);
         
         boolean result1 = FriendsDao.UserValidate("2");
         
-        Assert.assertEquals(value1,result1);
+        Assert.assertEquals(true,result1);
     }
 
     /**
@@ -46,14 +48,14 @@ public class FriendsDaoTest {
     public void testAddFriend() {
         FriendsDao friendsDao = new FriendsDao();
         AddFriendForm addFriendForm1 = new AddFriendForm();
-        int value1 = addFriendForm1.addNewFriend(1,1);
+        int value1 = addFriendForm1.addNewFriend(1,"1");
         
-        int validate= 0;
+        int validate= 1;
         
         boolean result1 = FriendsDao.UserValidate("1");
         
         if(result1 == true)
-            validate =1;
+            validate =0;
  
          Assert.assertEquals(value1, validate);
 
