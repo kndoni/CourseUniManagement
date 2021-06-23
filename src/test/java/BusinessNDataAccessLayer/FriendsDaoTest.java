@@ -19,7 +19,7 @@ public class FriendsDaoTest {
   @Test
     public void testFriendValidate() {
         AddFriendForm addFriendForm1 = new AddFriendForm();
-        boolean value1 = addFriendForm1.validateFriend("2");
+        boolean value1 = addFriendForm1.validateFriend("3");
         
         boolean result1 = FriendsDao.UserValidate("2");
         
@@ -46,14 +46,14 @@ public class FriendsDaoTest {
     public void testAddFriend() {
         FriendsDao friendsDao = new FriendsDao();
         AddFriendForm addFriendForm1 = new AddFriendForm();
-        int value1 = addFriendForm1.addNewFriend(1,"1");
+        int value1 = addFriendForm1.addNewFriend(1,1);
         
         int validate= 0;
         
         boolean result1 = FriendsDao.UserValidate("1");
         
         if(result1 == true)
-            validate =0;
+            validate =1;
  
          Assert.assertEquals(value1, validate);
 

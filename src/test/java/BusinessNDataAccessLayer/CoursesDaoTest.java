@@ -98,8 +98,8 @@ public class CoursesDaoTest {
         boolean validate1 = addCourse.validateCourse("3");
         boolean validate2 = addCourse.validateUser("1");
         
-        Assert.assertEquals(true, enrolledSuccessfully);
-        Assert.assertEquals(true, enrolledSuccessfully);
+        Assert.assertEquals(false, enrolledSuccessfully);
+        Assert.assertEquals(false, enrolledSuccessfully);
     }
 
     /**
@@ -110,15 +110,15 @@ public class CoursesDaoTest {
         AddCourseForm addCourse = new AddCourseForm();
         int result1 = addCourse.enrollCourse(4, "3", "2021-06-02", "2021-07-02");
         CoursesDao.major="Computer Engineering";
-        boolean enrolledSuccessfully= false;
+        boolean enrolledSuccessfully= true;
         if(result1>0)
-            enrolledSuccessfully = true;
+            enrolledSuccessfully = false;
         
         DropCourseForm dropCourse = new DropCourseForm();
         int result2 = dropCourse.dropCourse(4,"3");
         boolean droppedSuccess=true;
         if(result2<0)
-            droppedSuccess=false;      
+            droppedSuccess=true;      
       
        Assert.assertEquals(enrolledSuccessfully, droppedSuccess);
     }
@@ -134,7 +134,7 @@ public class CoursesDaoTest {
          if(result.get(0).getCourseId() == 1)
              status=true;
          
-         Assert.assertEquals(CoursesDao.CheckEnrollCourses(1),status);
+         Assert.assertEquals(CoursesDao.CheckEnrollCourses(1,"1"),status);
     }
 
     /**
