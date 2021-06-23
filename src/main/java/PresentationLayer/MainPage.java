@@ -114,6 +114,7 @@ public class MainPage extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\MainPageUni.png")); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
         jPanel3.setPreferredSize(new java.awt.Dimension(230, 55));
@@ -126,6 +127,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField2.setBorder(null);
 
         EnrollCourseBtn.setBackground(new java.awt.Color(0, 102, 102));
+        EnrollCourseBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\enrollCourse.png")); // NOI18N
         EnrollCourseBtn.setBorder(null);
         EnrollCourseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,6 +162,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField5.setBorder(null);
 
         UpdatesBtn1.setBackground(new java.awt.Color(0, 102, 102));
+        UpdatesBtn1.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\comments.png")); // NOI18N
         UpdatesBtn1.setBorder(null);
         UpdatesBtn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +203,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField3.setBorder(null);
 
         DropCourseBtn.setBackground(new java.awt.Color(0, 102, 102));
+        DropCourseBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\cancleCourse.png")); // NOI18N
         DropCourseBtn.setBorder(null);
         DropCourseBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +228,7 @@ public class MainPage extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DropCourseBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 33, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(0, 102, 102));
@@ -238,6 +242,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField4.setBorder(null);
 
         CheckAttendeesBtn.setBackground(new java.awt.Color(0, 102, 102));
+        CheckAttendeesBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\courseAttendees.png")); // NOI18N
         CheckAttendeesBtn.setBorder(null);
         CheckAttendeesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,6 +282,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField6.setBorder(null);
 
         AddFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
+        AddFriendsBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\add-friend.png")); // NOI18N
         AddFriendsBtn.setBorder(null);
         AddFriendsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,6 +323,7 @@ public class MainPage extends javax.swing.JFrame {
         jTextField7.setBorder(null);
 
         CheckFriendsBtn.setBackground(new java.awt.Color(0, 102, 102));
+        CheckFriendsBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\clickFriend.png")); // NOI18N
         CheckFriendsBtn.setBorder(null);
         CheckFriendsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,6 +369,7 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         MyProfileBtn.setBackground(new java.awt.Color(0, 102, 102));
+        MyProfileBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\profile.png")); // NOI18N
         MyProfileBtn.setBorder(null);
         MyProfileBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -451,6 +459,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel4.setText("Welcome");
 
         jButton8.setBackground(new java.awt.Color(186, 79, 64));
+        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Master2020\\Viti1\\Semestri2\\inxhinieri softwerike 2\\Projekt\\CourseUniManagement\\src\\main\\java\\images\\logout.png")); // NOI18N
         jButton8.setBorder(null);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
